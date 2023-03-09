@@ -142,10 +142,9 @@ public class SelectConfigureUI extends JFrame implements ActionListener {
 
             }
         });
+        
         nextBtn.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                //themePanel.remove(imgThemeLove);
-                //imgTheme.setIcon((Icon) theme.get(2));
 
                 if(currentImg<imgChacker){
                     currentImg+=1;
