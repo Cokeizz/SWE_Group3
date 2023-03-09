@@ -26,7 +26,6 @@ public class HomeUI
 
     private JButton redButton;
 
-
     public HomeUI()
     {
 
@@ -49,7 +48,18 @@ public class HomeUI
         Image scaledImageStartBtn = ((Image) startbtn).getScaledInstance(253,112,Image.SCALE_SMOOTH);
         ImageIcon scaledImgStartBtn = new ImageIcon(scaledImageStartBtn);
         startBtn = new JButton(scaledImgStartBtn);
+<<<<<<< HEAD
         startBtn.setBounds(280, 350, 253, 85);
+=======
+        startBtn.setBounds(280, 350, 253, 90);
+        startBtn.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                stopLaunch();
+                SelectConfigureUI select = new SelectConfigureUI();
+                select.start();
+            }
+        });
+>>>>>>> origin/main
         c.add(startBtn);
 
         ImageIcon imageIconSettingtBtn = new ImageIcon("src/main/resources/sprite/settingbtn.png");
@@ -80,7 +90,9 @@ public class HomeUI
         img.setSize(1920,1080);
         img.setLocation(-550,-240);
         c.add(img);
+    }
 
+<<<<<<< HEAD
         startBtn.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 launcher.launchConfigure();
@@ -97,6 +109,16 @@ public class HomeUI
 
         setVisible(true);
     }
+=======
+    public void startLaunch(){
+        setVisible(true);
+    }
+    public void stopLaunch(){
+        setVisible(false);
+    }
+
+
+>>>>>>> origin/main
     public void actionPerformed(ActionEvent e)
     {
 

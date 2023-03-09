@@ -358,6 +358,7 @@ public class Level {
      *
      * @author Jeroen Roosen
      */
+
     public interface LevelObserver {
 
         /**
