@@ -1,8 +1,10 @@
 package nl.tudelft.jpacman.ui;
 
+import nl.tudelft.jpacman.Launcher;
 import nl.tudelft.jpacman.sprite.SpriteStore;
 
 import javax.swing.*;
+import javax.swing.Action;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -10,6 +12,7 @@ public class HomeUI
     extends JFrame
     implements ActionListener {
 
+    Launcher launcher = new Launcher();
     // Components of the Form
     private Container c;
     private JLabel title;
@@ -27,7 +30,6 @@ public class HomeUI
     public HomeUI()
     {
 
-
         setTitle("Home");
         setBounds(300, 0, 800, 800);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -36,14 +38,18 @@ public class HomeUI
         c = getContentPane();
         c.setLayout(null);
 
-
+        /*name = new JLabel("Name");
+        name.setFont(new Font("Arial", Font.PLAIN, 20));
+        name.setSize(100, 20);
+        name.setLocation(100, 100);
+        c.add(name);*/
 
         ImageIcon imageIconStartBtn = new ImageIcon("src/main/resources/sprite/startbtn.png");
         Image startbtn = imageIconStartBtn.getImage();
         Image scaledImageStartBtn = ((Image) startbtn).getScaledInstance(253,112,Image.SCALE_SMOOTH);
         ImageIcon scaledImgStartBtn = new ImageIcon(scaledImageStartBtn);
         startBtn = new JButton(scaledImgStartBtn);
-        startBtn.setBounds(280, 350, 253, 90);
+        startBtn.setBounds(280, 350, 253, 85);
         c.add(startBtn);
 
         ImageIcon imageIconSettingtBtn = new ImageIcon("src/main/resources/sprite/settingbtn.png");
@@ -51,7 +57,7 @@ public class HomeUI
         Image scaledImageSettingBtn = ((Image) settingbtn).getScaledInstance(253,100,Image.SCALE_SMOOTH);
         ImageIcon scaledImgSettingBtn = new ImageIcon(scaledImageSettingBtn);
         settingBtn = new JButton(scaledImgSettingBtn);
-        settingBtn.setBounds(280, 480, 253, 100);
+        settingBtn.setBounds(280, 480, 253, 85);
         c.add(settingBtn);
 
 
@@ -75,14 +81,24 @@ public class HomeUI
         img.setLocation(-550,-240);
         c.add(img);
 
+        startBtn.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                launcher.launchConfigure();
+                setVisible(false);
+            }
+        });
+        settingBtn.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                SettingUI s1 = new SettingUI();
+                setVisible(false);
+            }
+        });
+
 
         setVisible(true);
     }
-
-
     public void actionPerformed(ActionEvent e)
     {
-
 
     }
 }

@@ -56,9 +56,10 @@ class BoardPanel extends JPanel {
         int w = board.getWidth() * SQUARE_SIZE;
         int h = board.getHeight() * SQUARE_SIZE;
 
-        Dimension size = new Dimension(w, h);
+        Dimension size = new Dimension(750, 750);
         setMinimumSize(size);
         setPreferredSize(size);
+
     }
 
     @Override

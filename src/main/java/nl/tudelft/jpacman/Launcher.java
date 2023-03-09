@@ -33,6 +33,7 @@ import javax.swing.*;
 @SuppressWarnings("PMD.TooManyMethods")
 public class Launcher {
 
+    public HomeUI h1;
     private static final PacManSprites SPRITE_STORE = new PacManSprites();
 
     public static final String DEFAULT_MAP = "/board.txt";
@@ -40,6 +41,8 @@ public class Launcher {
 
     private PacManUI pacManUI;
     private Game game;
+
+
 
     /**
      * @return The game object this launcher will start when {@link #launch()}
@@ -185,21 +188,25 @@ public class Launcher {
      * Creates and starts a JPac-Man game.
      */
     public void launchHome(){
-        HomeUI h1 = new HomeUI();
-
+        h1 = new HomeUI();
     }
-
+    public void setVisibleHomeUI(){
+        h1.setVisible(true);
+    }
+    public void launchConfigure(){
+        SelectConfigureUI configs = new SelectConfigureUI();
+        configs.start();
+    }
     public void launch() {
 
-        /*makeGame();
+
+        makeGame();
         PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
         addSinglePlayerKeys(builder);
         pacManUI = builder.build(getGame());
-        pacManUI.start();*/
+        pacManUI.start();
 
-        // launchHome();
-        SelectConfigureUI configs = new SelectConfigureUI();
-        configs.start();
+
     }
 
     /**
@@ -222,7 +229,7 @@ public class Launcher {
      *             When a resource could not be read.
      */
     public static void main(String[] args) throws IOException {
-        new Launcher().launch();
+        new Launcher().launchHome();
 
     }
 }

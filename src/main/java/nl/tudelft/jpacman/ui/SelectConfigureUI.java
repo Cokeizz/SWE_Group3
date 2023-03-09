@@ -1,87 +1,186 @@
 package nl.tudelft.jpacman.ui;
 
-import java.awt.*;
-import javax.swing.*;
+import nl.tudelft.jpacman.Launcher;
 
-public class SelectConfigureUI extends JFrame{
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.*;
+import javax.swing.border.Border;
+
+public class SelectConfigureUI extends JFrame implements ActionListener {
+    private Container c;
+    private JLabel imgBg;
+    private JPanel themePanel;
+    private JPanel difficultyPanel;
+    private JLabel imgTheme;
+    private JLabel imgThemeXmas;
+    private JLabel imgBgDifficultyBox;
+    private Map theme;
+    private int imgChacker = 3;
+    private int currentImg = 1;
+    private JButton startBtn;
+    private JButton backHomeBtn;
 
     public SelectConfigureUI(){
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(800,600);
-        this.setLocationRelativeTo(null);
-        this.setTitle("Pacman");
-        this.getContentPane().setBackground(new Color(0x00195f));
-        this.setLayout(new FlowLayout());
 
-        // JPanel defaultPanel = new JPanel();
-        // defaultPanel.setPreferredSize(new Dimension(600,600));
 
-        JPanel head = new JPanel();
-        JLabel choose = new JLabel("CHOOSE");
-        // JLabel imgLabel = new JLabel(new ImageIcon("src/main/resources/sprite/pMan.png"));
-        JLabel imgLabel = new JLabel();
-        imgLabel.setIcon(new ImageIcon(new ImageIcon("icon.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT)));
-        // head.setBackground(Color.orange);
-        choose.setFont(new Font("Sans-Serif", Font.PLAIN, 60));
-        head.setPreferredSize(new Dimension(800, 100));
-        head.add(imgLabel);
-        head.add(choose);
 
-        JPanel configs = new JPanel();
-        // configs.setBackground(Color.GREEN);
-        configs.setPreferredSize(new Dimension(800, 400));
-        configs.setLayout(new FlowLayout());
-        
-        JPanel subconfigs1 = new JPanel();
-        subconfigs1.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 50));
-        subconfigs1.setPreferredSize(new Dimension(800,200));
-        subconfigs1.setBackground(Color.green);
-        JButton previousLevel = new JButton("<<<");
-        JLabel image = new JLabel("Level of difficulty");
-        JButton nextLevel = new JButton(">>>");
-        subconfigs1.add(previousLevel);
-        subconfigs1.add(image);
-        subconfigs1.add(nextLevel);
+        setTitle("Home");
+        setBounds(300, 0, 800, 800);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setResizable(true);
 
-        JPanel subconfigs2 = new JPanel();
-        subconfigs2.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 50));
-        subconfigs2.setPreferredSize(new Dimension(800,200));
-        subconfigs2.setBackground(Color.red);
-        JButton previousTheme = new JButton("<<<");
-        JLabel image1 = new JLabel("Image of theme");
-        JButton nextTheme = new JButton(">>>");
-        subconfigs2.add(previousTheme);
-        subconfigs2.add(image1);
-        subconfigs2.add(nextTheme);
+        c = getContentPane();
+        c.setLayout(null);
 
-        configs.add(subconfigs1);
-        configs.add(subconfigs2);
+        //Add Image And Button
+        ImageIcon logo = new ImageIcon("src/main/resources/sprite/bg.png");
+        Image imagebg = logo.getImage();
+        Image scaledImage = ((Image) imagebg).getScaledInstance(1920,1080,Image.SCALE_AREA_AVERAGING);
+        ImageIcon scaledIcon = new ImageIcon(scaledImage);
+        imgBg = new JLabel(scaledIcon);
+        imgBg.setSize(1920,1080);
+        imgBg.setLocation(-550,-240);
 
-        // configs.add(previousLevel);
-        // configs.add(image);
-        // configs.add(nextLevel);
+        ImageIcon imageIconStartBtn = new ImageIcon("src/main/resources/sprite/playbtn.png");
+        Image startbtn = imageIconStartBtn.getImage();
+        Image scaleImageStartBtn = ((Image) startbtn).getScaledInstance(200,100,Image.SCALE_SMOOTH);
+        ImageIcon scaledImgStartBtn = new ImageIcon(scaleImageStartBtn);
+        startBtn = new JButton(scaledImgStartBtn);
+        startBtn.setBounds(300, 650, 200, 80);
+        this.add(startBtn);
 
-        // configs.add(previousTheme);
-        // configs.add(image1);
-        // configs.add(nextTheme);
+        ImageIcon imageIconBackBtn = new ImageIcon("src/main/resources/sprite/backbtn2.png");
+        Image backbtn = imageIconBackBtn.getImage();
+        Image scaleImageBackBtn = ((Image) backbtn).getScaledInstance(50,50,Image.SCALE_SMOOTH);
+        ImageIcon scaledImageBackBtn = new ImageIcon(scaleImageBackBtn);
+        backHomeBtn = new JButton(scaledImageBackBtn);
+        backHomeBtn.setBounds(0, 0, 50, 50);
+        this.add(backHomeBtn);
 
-        JPanel confirm = new JPanel();
-        // confirm.setBackground(Color.RED);
-        confirm.setPreferredSize(new Dimension(800, 100));
-        confirm.setLayout(new FlowLayout(FlowLayout.CENTER, 80, 5));
+        ImageIcon tmpChooseBand = new ImageIcon("src/main/resources/sprite/chooseband.png");
+        Image chooseBandLabel = tmpChooseBand.getImage();
+        Image scaleChooseBandLabel = ((Image) chooseBandLabel).getScaledInstance(253,112,Image.SCALE_SMOOTH);
+        ImageIcon scaledChooseBandLabel = new ImageIcon(scaleChooseBandLabel);
+        JLabel choose = new JLabel(scaledChooseBandLabel);
+        choose.setSize(1920,960);
+        choose.setLocation(-565,-400);
+        this.add(choose);
 
-        JButton confirmButton = new JButton("Confirm");
-        JButton backButton = new JButton("Back");
+        ImageIcon tmpThemeLove = new ImageIcon("src/main/resources/sprite/love.png");
+        Image themeLove = tmpThemeLove.getImage();
+        Image scaleThemeLove = ((Image) themeLove).getScaledInstance(400,400,Image.SCALE_SMOOTH);
+        ImageIcon scaledThemeLove = new ImageIcon(scaleThemeLove);
 
-        confirm.add(confirmButton);
-        confirm.add(backButton);
+        ImageIcon tmpThemeXmas = new ImageIcon("src/main/resources/sprite/xmas.png");
+        Image themeXmas = tmpThemeXmas.getImage();
+        Image scaleThemeXmas = ((Image) themeXmas).getScaledInstance(400,400,Image.SCALE_SMOOTH);
+        ImageIcon scaledThemeXmas = new ImageIcon(scaleThemeXmas);
 
-        this.add(head);
-        this.add(configs);
-        this.add(confirm);   
+        ImageIcon tmpThemeHalloween = new ImageIcon("src/main/resources/sprite/halloween.png");
+        Image themeHalloween = tmpThemeHalloween.getImage();
+        Image scaleThemeHalloween = ((Image) themeHalloween).getScaledInstance(400,400,Image.SCALE_SMOOTH);
+        ImageIcon scaledThemeHalloween = new ImageIcon(scaleThemeHalloween);
+
+        //imgBgDifficultyBox = new JLabel(scaledThemeBox);
+
+        //Add Boarder in ThemePanel
+        Border blackline = BorderFactory.createTitledBorder("Choose Theme");
+
+        //Add Image To ThemePanel
+        imgTheme = new JLabel(scaledThemeLove);
+
+        //Create ThemePanel
+        themePanel = new JPanel();
+        themePanel.setBounds(200,150,400,480);
+        themePanel.setBackground(Color.orange);
+        themePanel.setBorder(blackline);
+
+        //Add ThemePanel To Container and Add ImgTheme To Panel
+        this.add(themePanel);
+        themePanel.add(imgTheme);
+
+        //Create Choose Theme Button
+        JButton backBtn = new JButton("<-");
+        themePanel.add(backBtn);
+        JButton nextBtn = new JButton("->");
+        themePanel.add(nextBtn);
+
+        /*difficultyPanel = new JPanel();
+        difficultyPanel.setBounds(400,150,400,450);
+        difficultyPanel.setBackground(Color.orange);
+        this.add(difficultyPanel);
+        difficultyPanel.add(imgBgDifficultyBox);*/
+
+        //Add Background Image
+        this.add(imgBg);
+
+        //Collect ImageIcon as Object in Hashmap
+        HashMap<Integer, Object> theme = new HashMap<Integer, Object>();
+        theme.put(1,scaledThemeLove);
+        theme.put(2,scaledThemeXmas);
+        theme.put(3,scaledThemeHalloween);
+
+        //Action When Button is Clicked
+        backHomeBtn.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                new HomeUI().setVisible(true);
+                setVisible(false);
+
+            }
+        });
+
+        startBtn.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                Launcher l1 = new Launcher();
+                l1.launch();
+
+                setVisible(false);
+
+            }
+        });
+        nextBtn.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                //themePanel.remove(imgThemeLove);
+                //imgTheme.setIcon((Icon) theme.get(2));
+
+                if(currentImg<imgChacker){
+                    currentImg+=1;
+                    imgTheme.setIcon((Icon) theme.get(currentImg));
+                }else {
+                    currentImg=1;
+                    imgTheme.setIcon((Icon) theme.get(currentImg));
+                }
+                repaint();
+            }
+        });
+        backBtn.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                if(currentImg<=imgChacker&&currentImg>1){
+                    currentImg-=1;
+                    imgTheme.setIcon((Icon) theme.get(currentImg));
+                }else {
+                    currentImg=3;
+                    imgTheme.setIcon((Icon) theme.get(currentImg));
+                }
+                repaint();
+            }
+        });
+
+
+
+
     }
 
     public void start(){
         setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
     }
 }

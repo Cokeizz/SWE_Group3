@@ -73,6 +73,11 @@ public class PacManUI extends JFrame {
         assert buttons != null;
         assert keyMappings != null;
 
+        setBounds(300, 0, 800, 800);
+        setResizable(true);
+
+
+
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         PacKeyListener keys = new PacKeyListener(keyMappings);
@@ -92,6 +97,7 @@ public class PacManUI extends JFrame {
         contentPanel.add(buttonPanel, BorderLayout.SOUTH);
         contentPanel.add(scorePanel, BorderLayout.NORTH);
         contentPanel.add(boardPanel, BorderLayout.CENTER);
+
 
         pack();
     }
