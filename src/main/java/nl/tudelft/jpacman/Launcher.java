@@ -21,6 +21,7 @@ import nl.tudelft.jpacman.ui.Action;
 import nl.tudelft.jpacman.ui.HomeUI;
 import nl.tudelft.jpacman.ui.PacManUI;
 import nl.tudelft.jpacman.ui.PacManUiBuilder;
+import nl.tudelft.jpacman.ui.SelectConfigureUI;
 
 import javax.swing.*;
 
@@ -187,6 +188,7 @@ public class Launcher {
         HomeUI h1 = new HomeUI();
 
     }
+
     public void launch() {
 
         /*makeGame();
@@ -194,7 +196,10 @@ public class Launcher {
         addSinglePlayerKeys(builder);
         pacManUI = builder.build(getGame());
         pacManUI.start();*/
-        launchHome();
+
+        // launchHome();
+        SelectConfigureUI configs = new SelectConfigureUI();
+        configs.start();
     }
 
     /**
