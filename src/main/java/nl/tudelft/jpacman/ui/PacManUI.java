@@ -2,6 +2,7 @@ package nl.tudelft.jpacman.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.event.ActionListener;
 import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -28,7 +29,7 @@ import nl.tudelft.jpacman.ui.ScorePanel.ScoreFormatter;
  * @author Jeroen Roosen 
  *
  */
-public class PacManUI extends JFrame {
+public class PacManUI extends JFrame{
 
     /**
      * Default serialisation UID.

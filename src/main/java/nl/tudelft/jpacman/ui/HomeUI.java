@@ -1,5 +1,6 @@
 package nl.tudelft.jpacman.ui;
 
+import nl.tudelft.jpacman.Launcher;
 import nl.tudelft.jpacman.sprite.SpriteStore;
 
 import javax.swing.*;
@@ -23,10 +24,8 @@ public class HomeUI
 
     private JButton redButton;
 
-
     public HomeUI()
     {
-
 
         setTitle("Home");
         setBounds(300, 0, 800, 800);
@@ -44,6 +43,13 @@ public class HomeUI
         ImageIcon scaledImgStartBtn = new ImageIcon(scaledImageStartBtn);
         startBtn = new JButton(scaledImgStartBtn);
         startBtn.setBounds(280, 350, 253, 90);
+        startBtn.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                stopLaunch();
+                SelectConfigureUI select = new SelectConfigureUI();
+                select.start();
+            }
+        });
         c.add(startBtn);
 
         ImageIcon imageIconSettingtBtn = new ImageIcon("src/main/resources/sprite/settingbtn.png");
@@ -74,9 +80,13 @@ public class HomeUI
         img.setSize(1920,1080);
         img.setLocation(-550,-240);
         c.add(img);
+    }
 
-
+    public void startLaunch(){
         setVisible(true);
+    }
+    public void stopLaunch(){
+        setVisible(false);
     }
 
 

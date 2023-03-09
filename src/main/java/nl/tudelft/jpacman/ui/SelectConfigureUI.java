@@ -1,9 +1,13 @@
 package nl.tudelft.jpacman.ui;
 
+import nl.tudelft.jpacman.Launcher;
+
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class SelectConfigureUI extends JFrame{
+public class SelectConfigureUI extends JFrame implements ActionListener {
 
     public SelectConfigureUI(){
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -73,15 +77,31 @@ public class SelectConfigureUI extends JFrame{
         JButton confirmButton = new JButton("Confirm");
         JButton backButton = new JButton("Back");
 
+        confirmButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                stop();
+                Launcher launch = new Launcher();
+                launch.startGame();
+            }
+        });
+
         confirm.add(confirmButton);
         confirm.add(backButton);
 
         this.add(head);
         this.add(configs);
-        this.add(confirm);   
+        this.add(confirm);
     }
 
     public void start(){
         setVisible(true);
+    }
+    public void stop(){
+        setVisible(false);
+    }
+
+    public void actionPerformed(ActionEvent e)
+    {
+
     }
 }
