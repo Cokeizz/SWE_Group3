@@ -142,7 +142,7 @@ public class SelectConfigureUI extends JFrame implements ActionListener {
 
             }
         });
-        
+
         nextBtn.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
 
