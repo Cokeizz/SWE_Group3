@@ -27,7 +27,7 @@ public class SelectConfigureUI extends JFrame implements ActionListener {
 
     public SelectConfigureUI(){
 
-        setTitle("Home");
+        setTitle("SelectConfigure");
         setBounds(300, 0, 800, 800);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(true);
@@ -48,9 +48,9 @@ public class SelectConfigureUI extends JFrame implements ActionListener {
         Image startbtn = imageIconStartBtn.getImage();
         Image scaleImageStartBtn = ((Image) startbtn).getScaledInstance(200,100,Image.SCALE_SMOOTH);
         ImageIcon scaledImgStartBtn = new ImageIcon(scaleImageStartBtn);
-        startBtn = new JButton(scaledImgStartBtn);
-        startBtn.setBounds(300, 650, 200, 80);
-        this.add(startBtn);
+        setStartBtn(new JButton(scaledImgStartBtn));
+        getStartBtn().setBounds(300, 650, 200, 80);
+        this.add(getStartBtn());
 
         ImageIcon imageIconBackBtn = new ImageIcon("src/main/resources/sprite/backbtn2.png");
         Image backbtn = imageIconBackBtn.getImage();
@@ -132,14 +132,14 @@ public class SelectConfigureUI extends JFrame implements ActionListener {
             }
         });
 
-        startBtn.addActionListener(new ActionListener(){
+        getStartBtn().addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 PacManSprites sprite_store = new PacManSprites();
                 if(currentImg == 1){
                     PacManSprites ps1 = new PacManSprites();
-                    ps1.setWallPath("wall.png");
-                    ps1.setGroundPath("floor.png");
-                    ps1.setPelletPath("pellet.png");
+                    ps1.setWallPath("wall_love.png");
+                    ps1.setGroundPath("floor_love.png");
+                    ps1.setPelletPath("pellet_love.png");
                     Launcher l1 = new Launcher();
                     l1.setPacManSprites(ps1);
                     l1.launch();
@@ -148,27 +148,24 @@ public class SelectConfigureUI extends JFrame implements ActionListener {
 
                 else if(currentImg == 2){
                     PacManSprites ps2 = new PacManSprites();
-                    ps2.setWallPath("wall2.png");
-                    ps2.setGroundPath("floor.png");
-                    ps2.setPelletPath("pellet.png");
+                    ps2.setWallPath("wall_xmas.jpg");
+                    ps2.setGroundPath("floor_xmas.png");
+                    ps2.setPelletPath("pellet_xmas.png");
                     Launcher l2 = new Launcher();
                     l2.setPacManSprites(ps2);
                     l2.launch();
                     setVisible(false);
                 }
-
                 else if(currentImg == 3){
                     PacManSprites ps3 = new PacManSprites();
-                    ps3.setWallPath("wall2.png");
-                    ps3.setGroundPath("floor.png");
-                    ps3.setPelletPath("pellet.png");
+                    ps3.setWallPath("wall_halloween.png");
+                    ps3.setGroundPath("floor_halloween.png");
+                    ps3.setPelletPath("pellet_halloween.png");
                     Launcher l3 = new Launcher();
                     l3.setPacManSprites(ps3);
                     l3.launch();
                     setVisible(false);
                 }
-
-
             }
         });
         
@@ -208,5 +205,13 @@ public class SelectConfigureUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+    }
+
+    public JButton getStartBtn() {
+        return startBtn;
+    }
+
+    public void setStartBtn(JButton startBtn) {
+        this.startBtn = startBtn;
     }
 }
