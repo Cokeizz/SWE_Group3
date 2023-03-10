@@ -49,6 +49,11 @@ public class Launcher {
      * @return The game object this launcher will start when {@link #launch()}
      *         is called.
      */
+
+    public void setPacManSprites(PacManSprites ps){
+        this.SPRITE_STORE = ps;
+    }
+
     public Game getGame() {
         return game;
     }

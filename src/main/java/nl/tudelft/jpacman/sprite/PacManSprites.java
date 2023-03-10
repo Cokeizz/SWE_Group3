@@ -15,7 +15,6 @@ import nl.tudelft.jpacman.npc.ghost.GhostColor;
  */
 public class PacManSprites extends SpriteStore {
 
-    private String themeSprite;
     private String wallPath, groundPath, pelletPath;
 
     /**
@@ -53,6 +52,10 @@ public class PacManSprites extends SpriteStore {
      * The delay between frames.
      */
     private static final int ANIMATION_DELAY = 200;
+
+    private String WallPath;
+    private String GroundPath;
+    private String PelletPath;
 
     /**
      * @return A map of animated Pac-Man sprites for all directions.
@@ -118,24 +121,26 @@ public class PacManSprites extends SpriteStore {
     /**
      * @return The sprite for the wall.
      */
-    public Sprite getWallSprite() {
-        return loadSprite(this.wallPath);
+
+    public Sprite getWallSprite(){
+       return loadSprite(this.wallPath);
+    }
+
+    public Sprite getGroundSprite(){
+        return loadSprite(this.groundPath);
+    }
+
+    public Sprite getPelletSprite(){
+        return loadSprite(this.pelletPath);
     }
 
     /**
      * @return The sprite for the ground.
      */
-    public Sprite getGroundSprite() {
-        return loadSprite(this.groundPath);
-    }
 
     /**
      * @return The sprite for the
      */
-    public Sprite getPelletSprite() {
-        return loadSprite(this.pelletPath);
-    }
-
     /**
      * Overloads the default sprite loading, ignoring the exception. This class
      * assumes all sprites are provided, hence the exception will be thrown as a
