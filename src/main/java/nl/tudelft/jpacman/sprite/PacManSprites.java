@@ -116,21 +116,21 @@ public class PacManSprites extends SpriteStore {
      * @return The sprite for the wall.
      */
     public Sprite getWallSprite() {
-        return loadSprite("/sprite/wall.png");
+        return loadSprite("/sprite/wall_halloween.png");
     }
 
     /**
      * @return The sprite for the ground.
      */
     public Sprite getGroundSprite() {
-        return loadSprite("/sprite/floor.png");
+        return loadSprite("/sprite/floor_halloween.png");
     }
 
     /**
      * @return The sprite for the
      */
     public Sprite getPelletSprite() {
-        return loadSprite("/sprite/pellet.png");
+        return loadSprite("/sprite/pellet_halloween.png");
     }
 
     /**
