@@ -3,6 +3,8 @@ package nl.tudelft.jpacman.ui.Theme;
 import javax.swing.*;
 
 import nl.tudelft.jpacman.Launcher;
+import nl.tudelft.jpacman.sprite.PacManSprites;
+import nl.tudelft.jpacman.sprite.Sprite;
 import nl.tudelft.jpacman.ui.HomeUI;
 
 import java.awt.*;
@@ -24,11 +26,14 @@ public class ThemePanel extends JPanel implements ActionListener{
     private int currentThemeImageIndex;
     private JLabel themeLabel;
 
+    private Launcher startGame;
+    private PacManSprites sprite;
+
     public ThemePanel(ArrayList<Theme> themes) {
         this.themeImages = themes;
 
-        setBounds(200,150,400,480);
-        setBackground(Color.orange);
+        // setBounds(200,150,400,480);
+        // setBackground(Color.orange);
         setLayout(new BorderLayout());
         // setBorder(blackline);
 
@@ -37,7 +42,12 @@ public class ThemePanel extends JPanel implements ActionListener{
         Image scaledImage = ((Image) imagebg).getScaledInstance(1920,1080,Image.SCALE_AREA_AVERAGING);
         ImageIcon scaledIcon = new ImageIcon(scaledImage);
         imgBg = new JLabel(scaledIcon);
-        imgBg.setSize(1920,1080);
+        imgBg.setBounds(0, 0, 1920, 1080);
+
+        JPanel bgPanel = new JPanel();
+        bgPanel.setLayout(null);
+        bgPanel.add(imgBg);
+        // bgPanel.setOpaque(false);
 
         //Text heading choose
         ImageIcon tmpChooseBand = new ImageIcon("src/main/resources/sprite/chooseband.png");
@@ -80,8 +90,7 @@ public class ThemePanel extends JPanel implements ActionListener{
         buttonPanel = new JPanel();
         buttonPanel.add(previousButton);
         buttonPanel.add(nextButton);
-
-        // addComponents();
+        buttonPanel.setOpaque(false);
 
         // Create panels for different sections
         JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
@@ -97,10 +106,19 @@ public class ThemePanel extends JPanel implements ActionListener{
         // Add components to panels
         bottomPanel.add(startBtn);
 
+        topPanel.setOpaque(false);
+        centerPanel.setOpaque(false);
+        bottomPanel.setOpaque(false);
+
         // Add panels to main panel
+        add(bgPanel, BorderLayout.CENTER);
         add(topPanel, BorderLayout.NORTH);
         add(centerPanel, BorderLayout.CENTER);
         add(bottomPanel, BorderLayout.SOUTH);
+        // layeredPane.add(topPanel, new Integer(1));
+        // layeredPane.add(centerPanel, new Integer(2));
+        // layeredPane.add(bottomPanel, new Integer(3));
+        // layeredPane.add(backHomeBtn, new Integer(4));
 
     }
 
@@ -111,17 +129,21 @@ public class ThemePanel extends JPanel implements ActionListener{
             if (currentThemeImageIndex < 0) {
                 currentThemeImageIndex = themeImages.size() - 1;
             }
-            // System.out.println(getCurrentThemeImageName());
+            System.out.println(getCurrentThemeName());
 
         } else if (e.getActionCommand().equals("Next")) {
             currentThemeImageIndex++;
             if (currentThemeImageIndex >= themeImages.size()) {
                 currentThemeImageIndex = 0;
             }
-            // System.out.println(getCurrentThemeImageName());
+            System.out.println(getCurrentThemeName());
         } else if (e.getSource()==startBtn) {
-            Launcher startGame = new Launcher();
-            startGame.launch();
+            startGame = new Launcher();
+            sprite = new PacManSprites();
+            // send String of name file to sprite.setTheme(getCurrentThemeName());
+            // sprite.getThemeSprite();
+            // Sprite themeSprite = sprite.getThemeSprite();
+            // startGame.launch();
         } else if (e.getSource()==backHomeBtn) {
             new HomeUI().setVisible(true);
         }
@@ -130,7 +152,7 @@ public class ThemePanel extends JPanel implements ActionListener{
         themeLabel.setIcon(themeImages.get(currentThemeImageIndex).getIcon());
     }
     
-    //Return index of theme
+    //Return name of theme
     public String getCurrentThemeName() {
         return themeImages.get(currentThemeImageIndex).getName();
     }
