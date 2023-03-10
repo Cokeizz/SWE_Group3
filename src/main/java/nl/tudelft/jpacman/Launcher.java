@@ -35,7 +35,7 @@ import javax.swing.*;
 public class Launcher {
 
     public HomeUI h1;
-    private static final PacManSprites SPRITE_STORE = new PacManSprites();
+    private static PacManSprites SPRITE_STORE = new PacManSprites();
 
     public static final String DEFAULT_MAP = "/board.txt";
     private String levelMap = DEFAULT_MAP;
@@ -188,6 +188,10 @@ public class Launcher {
     /**
      * Creates and starts a JPac-Man game.
      */
+
+    public void setPacmanSprites(PacManSprites ps) {
+        this.SPRITE_STORE = ps;
+    }
 
     public void testConfigs() {
         ConfigsUI con = new ConfigsUI();

@@ -16,6 +16,7 @@ import nl.tudelft.jpacman.npc.ghost.GhostColor;
 public class PacManSprites extends SpriteStore {
 
     private String themeSprite;
+    private String wallPath, groundPath, pelletPath;
 
     /**
      * The sprite files are vertically stacked series for each direction, this
@@ -118,19 +119,21 @@ public class PacManSprites extends SpriteStore {
      * @return The sprite for the wall.
      */
     public Sprite getWallSprite() {
-        return loadSprite("/sprite/wall_xmas.jpg");
+        return loadSprite(this.wallPath);
     }
 
     /**
      * @return The sprite for the ground.
      */
-    public Sprite getGroundSprite() {return loadSprite("/sprite/floor_xmas.png");}
+    public Sprite getGroundSprite() {
+        return loadSprite(this.groundPath);
+    }
 
     /**
      * @return The sprite for the
      */
     public Sprite getPelletSprite() {
-        return loadSprite("/sprite/pellet_xmas.png");
+        return loadSprite(this.pelletPath);
     }
 
     /**
@@ -149,16 +152,16 @@ public class PacManSprites extends SpriteStore {
         }
     }
 
-    public void setTheme(String theme) {
-        this.themeSprite = theme;
+    public void setWallPath(String path) {
+        this.wallPath = "/sprite/theme/"+ path +"/wall.png";
     }
-    
-    public Sprite getThemeSprite() {
-        if (this.themeSprite != null) {
-            return loadSprite("/sprite/theme/" + this.themeSprite + "/wall.png");
-        } else {
-            // default sprite if no theme is set
-            return getWallSprite();
-        }
+
+    public void setGroundPath(String path) {
+        this.groundPath = "/sprite/theme/"+ path +"/ground.png";
     }
+
+    public void setPelletPath(String path) {
+        this.pelletPath = "/sprite/theme/"+ path +"/pellet.png";
+    }
+
 }
