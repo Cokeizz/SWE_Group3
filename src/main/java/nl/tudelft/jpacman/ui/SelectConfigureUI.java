@@ -168,8 +168,6 @@ public class SelectConfigureUI extends JFrame implements ActionListener {
         });
 
 
-
-
     }
 
     public void start(){
