@@ -26,8 +26,6 @@ public class SelectConfigureUI extends JFrame implements ActionListener {
 
     public SelectConfigureUI(){
 
-
-
         setTitle("Home");
         setBounds(300, 0, 800, 800);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
