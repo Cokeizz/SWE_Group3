@@ -194,10 +194,6 @@ public class Launcher {
      * Creates and starts a JPac-Man game.
      */
 
-    public void setPacmanSprites(PacManSprites ps) {
-        this.SPRITE_STORE = ps;
-    }
-
     public void testConfigs() {
         ConfigsUI con = new ConfigsUI();
         con.start();
@@ -214,17 +210,13 @@ public class Launcher {
         configs.start();
     }
     public void launch() {
-
-
-
         makeGame();
         PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
         addSinglePlayerKeys(builder);
         pacManUI = builder.build(getGame());
         pacManUI.start();
-
-
     }
+
 
     /**
      * Disposes of the UI. For more information see

@@ -131,7 +131,6 @@ public class SelectConfigureUI extends JFrame implements ActionListener {
 
             }
         });
-
         getStartBtn().addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 PacManSprites sprite_store = new PacManSprites();

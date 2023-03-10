@@ -19,6 +19,7 @@ public class PacManUiBuilder {
      */
     private static final String STOP_CAPTION = "Stop";
 
+
     /**
      * Caption for the default start button.
      */
@@ -66,6 +67,7 @@ public class PacManUiBuilder {
         if (defaultButtons) {
             addStartButton(game);
             addStopButton(game);
+
         }
         return new PacManUI(game, buttons, keyMappings, scoreFormatter);
     }
@@ -82,6 +84,7 @@ public class PacManUiBuilder {
 
         buttons.put(STOP_CAPTION, game::stop);
     }
+
 
     /**
      * Adds a button with the caption {@value #START_CAPTION} that starts the
@@ -141,6 +144,7 @@ public class PacManUiBuilder {
         defaultButtons = true;
         buttons.put(START_CAPTION, null);
         buttons.put(STOP_CAPTION, null);
+
         return this;
     }
 

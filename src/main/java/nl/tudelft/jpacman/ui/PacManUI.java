@@ -8,10 +8,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.WindowConstants;
+import javax.swing.*;
 
+import nl.tudelft.jpacman.Launcher;
 import nl.tudelft.jpacman.game.Game;
 import nl.tudelft.jpacman.ui.ScorePanel.ScoreFormatter;
 
@@ -74,9 +73,11 @@ public class PacManUI extends JFrame{
         assert buttons != null;
         assert keyMappings != null;
 
+
+        buttons.put("Exit Home",this::stop);
+
         setBounds(300, 0, 800, 800);
         setResizable(true);
-
 
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -91,6 +92,8 @@ public class PacManUI extends JFrame{
             scorePanel.setScoreFormatter(scoreFormatter);
         }
 
+
+
         boardPanel = new BoardPanel(game);
 
         Container contentPanel = getContentPane();
@@ -98,6 +101,11 @@ public class PacManUI extends JFrame{
         contentPanel.add(buttonPanel, BorderLayout.SOUTH);
         contentPanel.add(scorePanel, BorderLayout.NORTH);
         contentPanel.add(boardPanel, BorderLayout.CENTER);
+
+
+
+
+
 
 
         pack();
@@ -111,6 +119,11 @@ public class PacManUI extends JFrame{
         setVisible(true);
         ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
         service.scheduleAtFixedRate(this::nextFrame, 0, FRAME_INTERVAL, TimeUnit.MILLISECONDS);
+    }
+    public void stop() {
+        this.dispose();
+        Launcher l1 = new Launcher();
+        l1.launchHome();
     }
 
     /**

@@ -129,26 +129,21 @@ public class ThemePanel extends JPanel implements ActionListener{
             if (currentThemeImageIndex < 0) {
                 currentThemeImageIndex = themeImages.size() - 1;
             }
-            // System.out.println(getCurrentThemeName());
+            System.out.println(getCurrentThemeName());
 
         } else if (e.getActionCommand().equals("Next")) {
             currentThemeImageIndex++;
             if (currentThemeImageIndex >= themeImages.size()) {
                 currentThemeImageIndex = 0;
             }
-            // System.out.println(getCurrentThemeName());
+            System.out.println(getCurrentThemeName());
         } else if (e.getSource()==startBtn) {
             startGame = new Launcher();
             sprite = new PacManSprites();
-            String path = getCurrentThemeName(); 
-            sprite.setWallPath(path);
-            sprite.setGroundPath(path);
-            sprite.setPelletPath(path);
-            startGame.setPacmanSprites(sprite);
             // send String of name file to sprite.setTheme(getCurrentThemeName());
             // sprite.getThemeSprite();
             // Sprite themeSprite = sprite.getThemeSprite();
-            startGame.launch();
+            // startGame.launch();
         } else if (e.getSource()==backHomeBtn) {
             new HomeUI().setVisible(true);
         }
