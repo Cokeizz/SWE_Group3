@@ -10,7 +10,8 @@ import java.awt.*;
 public class ConfigsUI extends JFrame{
 
     // private JPanel themePanel;
-    
+    private JLabel imgBg;
+
     public ConfigsUI() {
         setTitle("Home");
         setBounds(300, 0, 800, 800);
@@ -18,7 +19,7 @@ public class ConfigsUI extends JFrame{
         setResizable(true);
         setLayout(new BorderLayout());
 
-        //Add Background image
+        // Add Background image
         // ImageIcon logo = new ImageIcon("src/main/resources/sprite/bg.png");
         // Image imagebg = logo.getImage();
         // Image scaledImage = ((Image) imagebg).getScaledInstance(1920,1080,Image.SCALE_AREA_AVERAGING);
@@ -64,7 +65,7 @@ public class ConfigsUI extends JFrame{
         this.add(themePanel);
 
         // this.add(choose, BorderLayout.NORTH);
-        // this.add(imgBg, BorderLayout.CENTER);
+        
     }
 
     public void start() {
