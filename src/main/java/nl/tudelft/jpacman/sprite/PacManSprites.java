@@ -51,6 +51,10 @@ public class PacManSprites extends SpriteStore {
      */
     private static final int ANIMATION_DELAY = 200;
 
+    private String WallPath;
+    private String GroundPath;
+    private String PelletPath;
+
     /**
      * @return A map of animated Pac-Man sprites for all directions.
      */
@@ -115,22 +119,40 @@ public class PacManSprites extends SpriteStore {
     /**
      * @return The sprite for the wall.
      */
+    public void setWallPath(String path){
+        this.WallPath = "/sprite/"+path;
+    }
+    public String getWallPath(){
+       return this.WallPath;
+    }
     public Sprite getWallSprite() {
-        return loadSprite("/sprite/wall.png");
+        return loadSprite(getWallPath());
     }
 
     /**
      * @return The sprite for the ground.
      */
+    public void setGroundPath(String path){
+        this.GroundPath = "/sprite/"+path;
+    }
+    public String getGroundPath(){
+        return this.GroundPath;
+    }
     public Sprite getGroundSprite() {
-        return loadSprite("/sprite/floor.png");
+        return loadSprite(getGroundPath());
     }
 
     /**
      * @return The sprite for the
      */
+    public void setPelletPath(String path){
+        this.PelletPath = "/sprite/"+path;
+    }
+    public String getPelletPath(){
+        return this.PelletPath;
+    }
     public Sprite getPelletSprite() {
-        return loadSprite("/sprite/pellet.png");
+        return loadSprite(getPelletPath());
     }
 
     /**

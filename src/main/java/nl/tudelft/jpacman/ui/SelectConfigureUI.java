@@ -1,6 +1,7 @@
 package nl.tudelft.jpacman.ui;
 
 import nl.tudelft.jpacman.Launcher;
+import nl.tudelft.jpacman.sprite.PacManSprites;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -25,8 +26,6 @@ public class SelectConfigureUI extends JFrame implements ActionListener {
     private JButton backHomeBtn;
 
     public SelectConfigureUI(){
-
-
 
         setTitle("Home");
         setBounds(300, 0, 800, 800);
@@ -135,10 +134,40 @@ public class SelectConfigureUI extends JFrame implements ActionListener {
 
         startBtn.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                Launcher l1 = new Launcher();
-                l1.launch();
+                PacManSprites sprite_store = new PacManSprites();
+                if(currentImg == 1){
+                    PacManSprites ps1 = new PacManSprites();
+                    ps1.setWallPath("wall.png");
+                    ps1.setGroundPath("floor.png");
+                    ps1.setPelletPath("pellet.png");
+                    Launcher l1 = new Launcher();
+                    l1.setPacManSprites(ps1);
+                    l1.launch();
+                    setVisible(false);
+                }
 
-                setVisible(false);
+                else if(currentImg == 2){
+                    PacManSprites ps2 = new PacManSprites();
+                    ps2.setWallPath("wall2.png");
+                    ps2.setGroundPath("floor.png");
+                    ps2.setPelletPath("pellet.png");
+                    Launcher l2 = new Launcher();
+                    l2.setPacManSprites(ps2);
+                    l2.launch();
+                    setVisible(false);
+                }
+
+                else if(currentImg == 3){
+                    PacManSprites ps3 = new PacManSprites();
+                    ps3.setWallPath("wall2.png");
+                    ps3.setGroundPath("floor.png");
+                    ps3.setPelletPath("pellet.png");
+                    Launcher l3 = new Launcher();
+                    l3.setPacManSprites(ps3);
+                    l3.launch();
+                    setVisible(false);
+                }
+
 
             }
         });

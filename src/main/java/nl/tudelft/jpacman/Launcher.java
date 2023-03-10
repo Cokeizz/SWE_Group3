@@ -34,7 +34,7 @@ import javax.swing.*;
 public class Launcher {
 
     public HomeUI h1;
-    private static final PacManSprites SPRITE_STORE = new PacManSprites();
+    private static PacManSprites SPRITE_STORE = new PacManSprites();
 
     public static final String DEFAULT_MAP = "/board.txt";
     private String levelMap = DEFAULT_MAP;
@@ -48,6 +48,11 @@ public class Launcher {
      * @return The game object this launcher will start when {@link #launch()}
      *         is called.
      */
+
+    public void setPacManSprites(PacManSprites ps){
+        this.SPRITE_STORE = ps;
+    }
+
     public Game getGame() {
         return game;
     }
