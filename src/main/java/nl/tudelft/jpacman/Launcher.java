@@ -17,8 +17,11 @@ import nl.tudelft.jpacman.npc.ghost.GhostFactory;
 import nl.tudelft.jpacman.points.PointCalculator;
 import nl.tudelft.jpacman.points.PointCalculatorLoader;
 import nl.tudelft.jpacman.sprite.PacManSprites;
-import nl.tudelft.jpacman.ui.*;
 import nl.tudelft.jpacman.ui.Action;
+import nl.tudelft.jpacman.ui.HomeUI;
+import nl.tudelft.jpacman.ui.PacManUI;
+import nl.tudelft.jpacman.ui.PacManUiBuilder;
+import nl.tudelft.jpacman.ui.SelectConfigureUI;
 
 import javax.swing.*;
 
@@ -39,11 +42,7 @@ public class Launcher {
     private PacManUI pacManUI;
     private Game game;
 
-<<<<<<< HEAD
 
-=======
-    HomeUI homeUI = new HomeUI();
->>>>>>> origin/main
 
     /**
      * @return The game object this launcher will start when {@link #launch()}
@@ -189,7 +188,6 @@ public class Launcher {
      * Creates and starts a JPac-Man game.
      */
     public void launchHome(){
-<<<<<<< HEAD
         h1 = new HomeUI();
     }
     public void setVisibleHomeUI(){
@@ -202,48 +200,14 @@ public class Launcher {
     public void launch() {
 
 
-=======
-        homeUI.startLaunch();
-    }
 
-    public void stoplaunchHome(){
-        homeUI.stopLaunch();
-    }
-    public void launchSelect(){
-        SelectConfigureUI s = new SelectConfigureUI();
-    }
-
-    public void testLaunch(){
-        testGui eiei = new testGui();
-    }
-
-    public void startGame(){
->>>>>>> origin/main
         makeGame();
         PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
         addSinglePlayerKeys(builder);
         pacManUI = builder.build(getGame());
         pacManUI.start();
-<<<<<<< HEAD
 
 
-=======
-    }
-    public void launch() {
-        launchHome();
-
-//        makeGame();
-//        PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
-//        addSinglePlayerKeys(builder);
-//        pacManUI = builder.build(getGame());
-//        pacManUI.start();
-
-//        testGui eiei = new testGui();
-//        eiei.start();
-
-//        SelectConfigureUI configs = new SelectConfigureUI();
-//        configs.start();
->>>>>>> origin/main
     }
 
     /**

@@ -1,7 +1,6 @@
 package nl.tudelft.jpacman.ui;
 
 import nl.tudelft.jpacman.Launcher;
-<<<<<<< HEAD
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -24,15 +23,6 @@ public class SelectConfigureUI extends JFrame implements ActionListener {
     private int currentImg = 1;
     private JButton startBtn;
     private JButton backHomeBtn;
-=======
-
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.*;
-
-public class SelectConfigureUI extends JFrame implements ActionListener {
->>>>>>> origin/main
 
     public SelectConfigureUI(){
 
@@ -152,7 +142,7 @@ public class SelectConfigureUI extends JFrame implements ActionListener {
 
             }
         });
-
+        
         nextBtn.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
 
@@ -181,41 +171,15 @@ public class SelectConfigureUI extends JFrame implements ActionListener {
 
 
 
-<<<<<<< HEAD
 
-=======
-        confirmButton.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                stop();
-                Launcher launch = new Launcher();
-                launch.startGame();
-            }
-        });
-
-        confirm.add(confirmButton);
-        confirm.add(backButton);
-
-        this.add(head);
-        this.add(configs);
-        this.add(confirm);
->>>>>>> origin/main
     }
 
     public void start(){
         setVisible(true);
     }
-<<<<<<< HEAD
 
     @Override
     public void actionPerformed(ActionEvent e) {
-=======
-    public void stop(){
-        setVisible(false);
-    }
-
-    public void actionPerformed(ActionEvent e)
-    {
->>>>>>> origin/main
 
     }
 }
