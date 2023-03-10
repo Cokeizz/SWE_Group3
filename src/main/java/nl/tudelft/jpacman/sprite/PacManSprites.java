@@ -15,7 +15,7 @@ import nl.tudelft.jpacman.npc.ghost.GhostColor;
  */
 public class PacManSprites extends SpriteStore {
 
-    private String themeSprite;
+    private String wallPath, groundPath, pelletPath;
 
     /**
      * The sprite files are vertically stacked series for each direction, this
@@ -121,48 +121,26 @@ public class PacManSprites extends SpriteStore {
     /**
      * @return The sprite for the wall.
      */
-    public void setWallPath(String path){
-        this.WallPath = "/sprite/"+path;
+
+    public Sprite getWallSprite(){
+       return loadSprite(this.wallPath);
     }
-    public String getWallPath(){
-       return this.WallPath;
+
+    public Sprite getGroundSprite(){
+        return loadSprite(this.groundPath);
     }
-    public Sprite getWallSprite() {
 
-        return loadSprite(getWallPath());
-
-
+    public Sprite getPelletSprite(){
+        return loadSprite(this.pelletPath);
     }
 
     /**
      * @return The sprite for the ground.
      */
-    public void setGroundPath(String path){
-        this.GroundPath = "/sprite/"+path;
-    }
-    public String getGroundPath(){
-        return this.GroundPath;
-    }
-    public Sprite getGroundSprite() {
-        return loadSprite(getGroundPath());
-    }
-
 
     /**
      * @return The sprite for the
      */
-    public void setPelletPath(String path){
-        this.PelletPath = "/sprite/"+path;
-    }
-    public String getPelletPath(){
-        return this.PelletPath;
-    }
-    public Sprite getPelletSprite() {
-
-        return loadSprite(getPelletPath());
-
-    }
-
     /**
      * Overloads the default sprite loading, ignoring the exception. This class
      * assumes all sprites are provided, hence the exception will be thrown as a
@@ -179,16 +157,16 @@ public class PacManSprites extends SpriteStore {
         }
     }
 
-    public void setTheme(String theme) {
-        this.themeSprite = theme;
+    public void setWallPath(String path) {
+        this.wallPath = "/sprite/theme/"+ path +"/wall.png";
     }
-    
-    public Sprite getThemeSprite() {
-        if (this.themeSprite != null) {
-            return loadSprite("/sprite/theme/" + this.themeSprite + "/wall.png");
-        } else {
-            // default sprite if no theme is set
-            return getWallSprite();
-        }
+
+    public void setGroundPath(String path) {
+        this.groundPath = "/sprite/theme/"+ path +"/ground.png";
     }
+
+    public void setPelletPath(String path) {
+        this.pelletPath = "/sprite/theme/"+ path +"/pellet.png";
+    }
+
 }

@@ -194,6 +194,10 @@ public class Launcher {
      * Creates and starts a JPac-Man game.
      */
 
+    public void setPacmanSprites(PacManSprites ps) {
+        this.SPRITE_STORE = ps;
+    }
+
     public void testConfigs() {
         ConfigsUI con = new ConfigsUI();
         con.start();
