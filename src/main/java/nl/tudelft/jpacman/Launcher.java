@@ -18,6 +18,7 @@ import nl.tudelft.jpacman.points.PointCalculator;
 import nl.tudelft.jpacman.points.PointCalculatorLoader;
 import nl.tudelft.jpacman.sprite.PacManSprites;
 import nl.tudelft.jpacman.ui.Action;
+import nl.tudelft.jpacman.ui.ConfigsUI;
 import nl.tudelft.jpacman.ui.HomeUI;
 import nl.tudelft.jpacman.ui.PacManUI;
 import nl.tudelft.jpacman.ui.PacManUiBuilder;
@@ -192,6 +193,12 @@ public class Launcher {
     /**
      * Creates and starts a JPac-Man game.
      */
+
+    public void testConfigs() {
+        ConfigsUI con = new ConfigsUI();
+        con.start();
+    }
+
     public void launchHome(){
         h1 = new HomeUI();
     }
@@ -235,7 +242,8 @@ public class Launcher {
      *             When a resource could not be read.
      */
     public static void main(String[] args) throws IOException {
-        new Launcher().launchHome();
+        // new Launcher().launchHome();
+        new Launcher().testConfigs();
 
     }
 }

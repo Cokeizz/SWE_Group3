@@ -60,7 +60,6 @@ public class HomeUI
         settingBtn.setBounds(280, 480, 253, 85);
         c.add(settingBtn);
 
-
         ImageIcon logo1 = new ImageIcon("src/main/resources/sprite/logo.png");
         Image ch1 = logo1.getImage();
         Image scaledImage2 = ((Image) ch1).getScaledInstance(585,360,Image.SCALE_AREA_AVERAGING);
@@ -69,8 +68,6 @@ public class HomeUI
         img2.setSize(1920,1080);
         img2.setLocation(-550,-400);
         c.add(img2);
-
-
 
         ImageIcon logo = new ImageIcon("src/main/resources/sprite/bg.png");
         Image image = logo.getImage();

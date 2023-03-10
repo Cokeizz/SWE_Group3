@@ -15,6 +15,8 @@ import nl.tudelft.jpacman.npc.ghost.GhostColor;
  */
 public class PacManSprites extends SpriteStore {
 
+    private String themeSprite;
+
     /**
      * The sprite files are vertically stacked series for each direction, this
      * array denotes the order.
@@ -25,7 +27,7 @@ public class PacManSprites extends SpriteStore {
         Direction.SOUTH,
         Direction.WEST
     };
-
+    
     /**
      * The image size in pixels.
      */
@@ -126,7 +128,10 @@ public class PacManSprites extends SpriteStore {
        return this.WallPath;
     }
     public Sprite getWallSprite() {
+
         return loadSprite(getWallPath());
+
+
     }
 
     /**
@@ -142,6 +147,7 @@ public class PacManSprites extends SpriteStore {
         return loadSprite(getGroundPath());
     }
 
+
     /**
      * @return The sprite for the
      */
@@ -152,7 +158,9 @@ public class PacManSprites extends SpriteStore {
         return this.PelletPath;
     }
     public Sprite getPelletSprite() {
+
         return loadSprite(getPelletPath());
+
     }
 
     /**
@@ -168,6 +176,19 @@ public class PacManSprites extends SpriteStore {
             return super.loadSprite(resource);
         } catch (IOException e) {
             throw new PacmanConfigurationException("Unable to load sprite: " + resource, e);
+        }
+    }
+
+    public void setTheme(String theme) {
+        this.themeSprite = theme;
+    }
+    
+    public Sprite getThemeSprite() {
+        if (this.themeSprite != null) {
+            return loadSprite("/sprite/theme/" + this.themeSprite + "/wall.png");
+        } else {
+            // default sprite if no theme is set
+            return getWallSprite();
         }
     }
 }
