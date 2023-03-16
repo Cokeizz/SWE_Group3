@@ -49,7 +49,8 @@ public class HomeUI
         Image scaledImageStartBtn = ((Image) startbtn).getScaledInstance(253,112,Image.SCALE_SMOOTH);
         ImageIcon scaledImgStartBtn = new ImageIcon(scaledImageStartBtn);
         startBtn = new JButton(scaledImgStartBtn);
-        startBtn.setBounds(280, 350, 253, 85);
+        startBtn.setBounds(280, 350, 253, 90);
+        startBtn.setBorderPainted(false);
         c.add(startBtn);
 
         ImageIcon imageIconSettingtBtn = new ImageIcon("src/main/resources/sprite/settingbtn.png");
@@ -57,7 +58,8 @@ public class HomeUI
         Image scaledImageSettingBtn = ((Image) settingbtn).getScaledInstance(253,100,Image.SCALE_SMOOTH);
         ImageIcon scaledImgSettingBtn = new ImageIcon(scaledImageSettingBtn);
         settingBtn = new JButton(scaledImgSettingBtn);
-        settingBtn.setBounds(280, 480, 253, 85);
+        settingBtn.setBounds(280, 480, 253, 90);
+        settingBtn.setBorderPainted(false);
         c.add(settingBtn);
 
         ImageIcon logo1 = new ImageIcon("src/main/resources/sprite/logo.png");

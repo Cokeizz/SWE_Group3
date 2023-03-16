@@ -162,7 +162,7 @@ public class PacManSprites extends SpriteStore {
     }
 
     public void setGroundPath(String path) {
-        this.groundPath = "/sprite/theme/"+ path +"/ground.png";
+        this.groundPath = "/sprite/theme/"+ path +"/floor.png";
     }
 
     public void setPelletPath(String path) {

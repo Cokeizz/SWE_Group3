@@ -141,6 +141,7 @@ public class PacManUiBuilder {
         defaultButtons = true;
         buttons.put(START_CAPTION, null);
         buttons.put(STOP_CAPTION, null);
+
         return this;
     }
 
@@ -156,4 +157,5 @@ public class PacManUiBuilder {
         this.scoreFormatter = scoreFormatter;
         return this;
     }
+
 }

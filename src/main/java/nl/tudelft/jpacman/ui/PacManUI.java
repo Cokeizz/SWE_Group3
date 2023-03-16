@@ -8,10 +8,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.WindowConstants;
+import javax.swing.*;
 
+import nl.tudelft.jpacman.Launcher;
 import nl.tudelft.jpacman.game.Game;
 import nl.tudelft.jpacman.ui.ScorePanel.ScoreFormatter;
 
@@ -73,6 +72,8 @@ public class PacManUI extends JFrame{
         assert game != null;
         assert buttons != null;
         assert keyMappings != null;
+        buttons.put("Exit",this::exit);
+
 
         setBounds(300, 0, 800, 800);
         setResizable(true);
@@ -85,6 +86,7 @@ public class PacManUI extends JFrame{
         addKeyListener(keys);
 
         JPanel buttonPanel = new ButtonPanel(buttons, this);
+
 
         scorePanel = new ScorePanel(game.getPlayers());
         if (scoreFormatter != null) {
@@ -111,6 +113,11 @@ public class PacManUI extends JFrame{
         setVisible(true);
         ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
         service.scheduleAtFixedRate(this::nextFrame, 0, FRAME_INTERVAL, TimeUnit.MILLISECONDS);
+    }
+    public void exit(){
+        setVisible(false);
+        Launcher l1 = new Launcher();
+        l1.launchConfigure();
     }
 
     /**

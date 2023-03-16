@@ -210,7 +210,7 @@ public class Launcher {
         h1.setVisible(true);
     }
     public void launchConfigure(){
-        SelectConfigureUI configs = new SelectConfigureUI();
+        ConfigsUI configs = new ConfigsUI();
         configs.start();
     }
     public void launch() {
@@ -247,7 +247,7 @@ public class Launcher {
      */
     public static void main(String[] args) throws IOException {
         // new Launcher().launchHome();
-        new Launcher().testConfigs();
+        new Launcher().launchHome();
 
     }
 }
