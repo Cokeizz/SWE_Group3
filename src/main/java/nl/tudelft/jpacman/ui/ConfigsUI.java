@@ -59,17 +59,13 @@ public class ConfigsUI extends JFrame implements ActionListener {
         backBtn.setBorderPainted(false);
 
         themePanel = new ThemePanel(AddThemeImages.getImages());
-
         themePanel.setOpaque(true);
         themePanel.setBounds(200,150,400,480);
-
 
         this.add(backBtn);
         this.add(startBtn);
         this.add(themePanel);
         this.add(imgBg);
-
-
 
         startBtn.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
