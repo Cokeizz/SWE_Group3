@@ -31,7 +31,7 @@ public class GhostFactory {
      * @return A new Blinky.
      */
     public Ghost createBlinky() {
-        return new Blinky(sprites.getGhostSprite(GhostColor.VUL_WHITE));
+        return new Blinky(sprites.getGhostSprite(GhostColor.RED));
     }
 
     /**
@@ -51,7 +51,7 @@ public class GhostFactory {
      * @return A new Inky.
      */
     public Ghost createInky() {
-        return new Inky(sprites.getGhostSprite(GhostColor.CYAN));
+        return new Inky(sprites.getGhostSprite(GhostColor.ORANGE));
     }
 
     /**
@@ -61,6 +61,6 @@ public class GhostFactory {
      * @return A new Clyde.
      */
     public Ghost createClyde() {
-        return new Clyde(sprites.getGhostSprite(GhostColor.VUL_BLUE));
+        return new Clyde(sprites.getGhostSprite(GhostColor.CYAN));
     }
 }

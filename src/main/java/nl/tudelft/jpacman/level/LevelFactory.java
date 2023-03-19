@@ -108,7 +108,7 @@ public class LevelFactory {
             case CLYDE:
                 return ghostFact.createClyde();
             default:
-                return new RandomGhost(sprites.getGhostSprite(GhostColor.VUL_WHITE));
+                return new RandomGhost(sprites.getGhostSprite(GhostColor.RED));
         }
     }
 

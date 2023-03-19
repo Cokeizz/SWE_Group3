@@ -10,7 +10,7 @@ public enum GhostColor {
     /**
      * Shadow, a.k.a. Blinky.
      */
-    VUL_WHITE,
+    VUL_WHITE,RED,
     VUL_BLUE,
 
     /**
@@ -21,7 +21,7 @@ public enum GhostColor {
     /**
      * Speedy, a.k.a. Pinky.
      */
-    PINK,
+    PINK,CYANS,
 
     /**
      * Pokey, a.k.a. Clyde.

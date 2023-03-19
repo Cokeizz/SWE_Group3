@@ -15,7 +15,7 @@ import nl.tudelft.jpacman.npc.ghost.GhostColor;
  */
 public class PacManSprites extends SpriteStore {
 
-    private String wallPath, groundPath, pelletPath,pacmanPath;
+    private String wallPath, groundPath, pelletPath,pacmanPath,ghostPath;
 
     /**
      * The sprite files are vertically stacked series for each direction, this
@@ -110,8 +110,10 @@ public class PacManSprites extends SpriteStore {
     public Map<Direction, Sprite> getGhostSprite(GhostColor color) {
         assert color != null;
 
-        String resource = "/sprite/ghost_" + color.name().toLowerCase()
-            + ".png";
+//        String resource = "/sprite/theme/"+"love"+"/ghost_" + color.name().toLowerCase()
+//            + ".png";
+          String resource = "/sprite/theme/"+"love"+"/ghost_" + color.name().toLowerCase()
+              + ".png";
         return directionSprite(resource, GHOST_ANIMATION_FRAMES);
     }
 
@@ -154,7 +156,11 @@ public class PacManSprites extends SpriteStore {
         }
     }
     public void setPacmanPath(String path) {
-        this.pacmanPath = "/sprite/theme/"+ path +"/wall.png";
+        this.pacmanPath = "/sprite/theme/"+ path +"/pacman.png";
+    }
+
+    public void setGhostPath(String path) {
+        this.ghostPath = path;
     }
 
     public void setWallPath(String path) {
