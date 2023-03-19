@@ -31,7 +31,7 @@ public class GhostFactory {
      * @return A new Blinky.
      */
     public Ghost createBlinky() {
-        return new Blinky(sprites.getGhostSprite(GhostColor.RED));
+        return new Blinky(sprites.getGhostSprite(GhostColor.VUL_WHITE));
     }
 
     /**
@@ -61,6 +61,6 @@ public class GhostFactory {
      * @return A new Clyde.
      */
     public Ghost createClyde() {
-        return new Clyde(sprites.getGhostSprite(GhostColor.ORANGE));
+        return new Clyde(sprites.getGhostSprite(GhostColor.VUL_BLUE));
     }
 }

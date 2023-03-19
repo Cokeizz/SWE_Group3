@@ -15,7 +15,7 @@ import nl.tudelft.jpacman.npc.ghost.GhostColor;
  */
 public class PacManSprites extends SpriteStore {
 
-    private String wallPath, groundPath, pelletPath;
+    private String wallPath, groundPath, pelletPath,pacmanPath;
 
     /**
      * The sprite files are vertically stacked series for each direction, this
@@ -53,15 +53,12 @@ public class PacManSprites extends SpriteStore {
      */
     private static final int ANIMATION_DELAY = 200;
 
-    private String WallPath;
-    private String GroundPath;
-    private String PelletPath;
 
     /**
      * @return A map of animated Pac-Man sprites for all directions.
      */
     public Map<Direction, Sprite> getPacmanSprites() {
-        return directionSprite("/sprite/pacman.png", PACMAN_ANIMATION_FRAMES);
+        return directionSprite("/sprite/theme/love/pacman.png", PACMAN_ANIMATION_FRAMES);
     }
 
     /**
@@ -155,6 +152,9 @@ public class PacManSprites extends SpriteStore {
         } catch (IOException e) {
             throw new PacmanConfigurationException("Unable to load sprite: " + resource, e);
         }
+    }
+    public void setPacmanPath(String path) {
+        this.pacmanPath = "/sprite/theme/"+ path +"/wall.png";
     }
 
     public void setWallPath(String path) {

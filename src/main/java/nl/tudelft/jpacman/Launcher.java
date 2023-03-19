@@ -37,13 +37,13 @@ public class Launcher {
     public HomeUI h1;
     private static PacManSprites SPRITE_STORE = new PacManSprites();
 
-    public static final String DEFAULT_MAP = "/board.txt";
+    public static String DEFAULT_MAP = "/board1.txt";
+
     private String levelMap = DEFAULT_MAP;
 
     private PacManUI pacManUI;
+
     private Game game;
-
-
 
     /**
      * @return The game object this launcher will start when {@link #launch()}
@@ -56,6 +56,10 @@ public class Launcher {
 
     public Game getGame() {
         return game;
+    }
+
+    public void setMap(String map){
+        DEFAULT_MAP = map;
     }
 
     /**
@@ -214,8 +218,6 @@ public class Launcher {
         configs.start();
     }
     public void launch() {
-
-
 
         makeGame();
         PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();

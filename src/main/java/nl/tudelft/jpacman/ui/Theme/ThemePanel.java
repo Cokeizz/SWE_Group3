@@ -38,9 +38,6 @@ public class ThemePanel extends JPanel implements ActionListener{
         this.setBackground(Color.orange);
 
 
-
-
-
         currentThemeImageIndex = 0;
 
         themeLabel = new JLabel();

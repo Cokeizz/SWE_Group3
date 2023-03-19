@@ -10,7 +10,8 @@ public enum GhostColor {
     /**
      * Shadow, a.k.a. Blinky.
      */
-    RED,
+    VUL_WHITE,
+    VUL_BLUE,
 
     /**
      * Bashful, a.k.a. Inky.
