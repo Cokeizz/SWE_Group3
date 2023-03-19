@@ -58,7 +58,7 @@ public class PacManSprites extends SpriteStore {
      * @return A map of animated Pac-Man sprites for all directions.
      */
     public Map<Direction, Sprite> getPacmanSprites() {
-        return directionSprite("/sprite/theme/love/pacman.png", PACMAN_ANIMATION_FRAMES);
+        return directionSprite(this.pacmanPath, PACMAN_ANIMATION_FRAMES);
     }
 
     /**
@@ -110,10 +110,10 @@ public class PacManSprites extends SpriteStore {
     public Map<Direction, Sprite> getGhostSprite(GhostColor color) {
         assert color != null;
 
-//        String resource = "/sprite/theme/"+"love"+"/ghost_" + color.name().toLowerCase()
-//            + ".png";
-          String resource = "/sprite/theme/"+"love"+"/ghost_" + color.name().toLowerCase()
-              + ".png";
+        String resource = "/sprite/theme/"+ghostPath+"/ghost_" + color.name().toLowerCase()
+            + ".png";
+//          String resource = "/sprite/theme/"+"love"+"/ghost_" + color.name().toLowerCase()
+//              + ".png";
         return directionSprite(resource, GHOST_ANIMATION_FRAMES);
     }
 

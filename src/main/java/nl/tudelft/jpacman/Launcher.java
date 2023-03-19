@@ -37,8 +37,10 @@ public class Launcher {
     public HomeUI h1;
     private static PacManSprites SPRITE_STORE = new PacManSprites();
 
-    public static String DEFAULT_MAP = "/board3.txt";
+//    public static String DEFAULT_MAP = "/board3.txt";
+    public String DEFAULT_MAP;
 
+//    private String levelMap = DEFAULT_MAP;
     private String levelMap = DEFAULT_MAP;
 
     private PacManUI pacManUI;
@@ -60,6 +62,7 @@ public class Launcher {
 
     public void setMap(String map){
         DEFAULT_MAP = map;
+        this.levelMap = map;
     }
 
     /**
