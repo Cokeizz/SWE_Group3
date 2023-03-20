@@ -51,11 +51,13 @@ public class GameFactory {
      */
 
     public int getTimeDifficulty(String difficulty) {
-        int time = 120;
+        int time = 60;
         if (difficulty == "Hard") {
             time = 30;
-        } else if (difficulty == "Medium") {
-            time = 60;
+        } else if (difficulty == "Easy") {
+            time = 120;
+        } else if (difficulty == "Super Hard") {
+            time = 10;
         }
         return time;
     }

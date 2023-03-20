@@ -43,8 +43,6 @@ public class Launcher {
 
     private Game game;
 
-    private ConfigsUI configsUI;
-
     /**
      * @return The game object this launcher will start when {@link #launch()}
      *         is called.
@@ -223,7 +221,6 @@ public class Launcher {
         h1.setVisible(true);
     }
     public void launchConfigure(){
-//        configsUI.start();
         ConfigsUI configs = new ConfigsUI();
         configs.start();
     }
@@ -237,7 +234,6 @@ public class Launcher {
     }
 
     public void launchGame(String difficulty) {
-//        makeGame();
         makeLevelDifficultyGame(difficulty);
         PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
         addSinglePlayerKeys(builder);
