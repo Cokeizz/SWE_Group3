@@ -175,9 +175,6 @@ public class ConfigsUI extends JFrame implements ActionListener {
             }
         });
 
-
-
-
     }
     public void start() {
         setVisible(true);
