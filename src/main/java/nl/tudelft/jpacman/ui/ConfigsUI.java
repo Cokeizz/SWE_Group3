@@ -30,6 +30,7 @@ public class ConfigsUI extends JFrame implements ActionListener {
     private String bgPath = "origin";
     private ImageIcon scaledIcon;
     private JLabel img2;
+    private int currentDif;
 
 
     public ConfigsUI() {
@@ -74,11 +75,11 @@ public class ConfigsUI extends JFrame implements ActionListener {
 
         setThemePanel(new ThemePanel(AddThemeImages.getImages()));
         getThemePanel().setOpaque(true);
-        getThemePanel().setBounds(30,150,360,440);
+        getThemePanel().setBounds(50,150,360,440);
 
         difPanel = new JPanel();
         difPanel.setLayout(null);
-        difPanel.setBounds(400,150,360,440);
+        difPanel.setBounds(430,150,360,440);
        // difPanel.setBackground(Color.black);
         difPanel.setOpaque(false);
 
@@ -93,8 +94,6 @@ public class ConfigsUI extends JFrame implements ActionListener {
         difBtn3.setBounds(distance+140,100,70,70);
         difBtn4.setBounds(distance+210,100,70,70);
 
-
-
         difPanel.add(img2);
         difPanel.add(difBtn1);
         difPanel.add(difBtn2);
@@ -108,6 +107,44 @@ public class ConfigsUI extends JFrame implements ActionListener {
         this.add(getThemePanel());
         this.add(difPanel);
         this.add(imgBg);
+
+
+        difBtn1.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                currentDif = 1;
+                difBtn1.setEnabled(false);
+                difBtn2.setEnabled(true);
+                difBtn3.setEnabled(true);
+                difBtn4.setEnabled(true);
+            }
+        });
+        difBtn2.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                currentDif = 2;
+                difBtn1.setEnabled(true);
+                difBtn2.setEnabled(false);
+                difBtn3.setEnabled(true);
+                difBtn4.setEnabled(true);
+            }
+        });
+        difBtn3.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                currentDif = 3;
+                difBtn1.setEnabled(true);
+                difBtn2.setEnabled(true);
+                difBtn3.setEnabled(false);
+                difBtn4.setEnabled(true);
+            }
+        });
+        difBtn4.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                currentDif = 4;
+                difBtn1.setEnabled(true);
+                difBtn2.setEnabled(true);
+                difBtn3.setEnabled(true);
+                difBtn4.setEnabled(false);
+            }
+        });
 
 
 
