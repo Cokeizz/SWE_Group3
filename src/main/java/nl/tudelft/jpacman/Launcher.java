@@ -43,6 +43,8 @@ public class Launcher {
 
     private Game game;
 
+    private ConfigsUI configsUI;
+
     /**
      * @return The game object this launcher will start when {@link #launch()}
      *         is called.
@@ -95,10 +97,10 @@ public class Launcher {
     }
 
     // method for create game difficulty
-    public Game makeLevelDifficultyGame() {
+    public Game makeLevelDifficultyGame(String difficulty) {
         GameFactory gf = getGameFactory();
         Level level = makeLevel();
-        game = gf.createLevelDifficultyGame(level, loadPointCalculator(), "Hard");
+        game = gf.createLevelDifficultyGame(level, loadPointCalculator(), difficulty);
         return game;
     }
 
@@ -221,12 +223,22 @@ public class Launcher {
         h1.setVisible(true);
     }
     public void launchConfigure(){
+//        configsUI.start();
         ConfigsUI configs = new ConfigsUI();
         configs.start();
     }
     public void launch() {
 //        makeGame();
-        makeLevelDifficultyGame();
+//        makeLevelDifficultyGame();
+        PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
+        addSinglePlayerKeys(builder);
+        pacManUI = builder.build(getGame());
+        pacManUI.start();
+    }
+
+    public void launchGame(String difficulty) {
+//        makeGame();
+        makeLevelDifficultyGame(difficulty);
         PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
         addSinglePlayerKeys(builder);
         pacManUI = builder.build(getGame());

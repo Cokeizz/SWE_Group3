@@ -92,7 +92,7 @@ public class ThemePanel extends JPanel implements ActionListener{
     public String getCurrentThemeName() {
         return getThemeImages().get(getCurrentThemeImageIndex()).getName();
     }
-    public void startGame(){
+    public void startGame(String diff){
         startGame = new Launcher();
         sprite = new PacManSprites();
         String path = getCurrentThemeName();
@@ -106,7 +106,7 @@ public class ThemePanel extends JPanel implements ActionListener{
         // send String of name file to sprite.setTheme(getCurrentThemeName());
         // sprite.getThemeSprite();
         // Sprite themeSprite = sprite.getThemeSprite();
-        startGame.launch();
+        startGame.launchGame(diff);
     }
 
     public JButton getNextButton() {

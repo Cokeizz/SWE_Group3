@@ -162,7 +162,7 @@ public class ConfigsUI extends JFrame implements ActionListener {
         getStartBtn().addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 setVisible(false);
-                getThemePanel().startGame();
+                getThemePanel().startGame(getCurrentDifficulty());
             }
         });
 
@@ -208,5 +208,15 @@ public class ConfigsUI extends JFrame implements ActionListener {
         repaint();
     }
 
-
+    public String getCurrentDifficulty() {
+        if (currentDif == 1) {
+            return "Easy";
+        } else if (currentDif == 3) {
+            return "Hard";
+        } else if (currentDif == 4) {
+            return "Super Hard";
+        } else {
+            return "Medium";
+        }
+    }
 }
