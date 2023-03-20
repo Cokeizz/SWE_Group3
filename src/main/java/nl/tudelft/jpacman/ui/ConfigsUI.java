@@ -25,6 +25,10 @@ public class ConfigsUI extends JFrame implements ActionListener {
     private int currentThemeImageIndex;
     private ThemePanel themePanel;
     private JButton backBtn;
+    private JPanel difPanel;
+    private JPanel mapPanel;
+    private String bgPath = "origin";
+    private ImageIcon scaledIcon;
 
     public ConfigsUI() {
         setTitle("Customize");
@@ -33,22 +37,22 @@ public class ConfigsUI extends JFrame implements ActionListener {
         setResizable(true);
         setLayout(null);
 
-
-        ImageIcon logo = new ImageIcon("src/main/resources/sprite/bg.png");
+        ImageIcon logo = new ImageIcon("src/main/resources/sprite/theme/"+bgPath+ "/bg.png");
         Image imagebg = logo.getImage();
         Image scaledImage = ((Image) imagebg).getScaledInstance(800,800,Image.SCALE_AREA_AVERAGING);
-        ImageIcon scaledIcon = new ImageIcon(scaledImage);
+        scaledIcon = new ImageIcon(scaledImage);
         imgBg = new JLabel(scaledIcon);
         imgBg.setSize(800,800);
         imgBg.setLocation(0,0);
+
 
         ImageIcon imageIconStartBtn = new ImageIcon("src/main/resources/sprite/playbtn.png");
         Image startbtn = imageIconStartBtn.getImage();
         Image scaleImageStartBtn = ((Image) startbtn).getScaledInstance(200,100,Image.SCALE_SMOOTH);
         ImageIcon scaledImgStartBtn = new ImageIcon(scaleImageStartBtn);
-        startBtn = new JButton(scaledImgStartBtn);
-        startBtn.setBounds(300, 650, 200, 80);
-        startBtn.setBorderPainted(false);
+        setStartBtn(new JButton(scaledImgStartBtn));
+        getStartBtn().setBounds(300, 650, 200, 80);
+        getStartBtn().setBorderPainted(false);
 
         ImageIcon imageIconBackBtn = new ImageIcon("src/main/resources/sprite/backbtn2.png");
         Image backbtn = imageIconBackBtn.getImage();
@@ -58,19 +62,40 @@ public class ConfigsUI extends JFrame implements ActionListener {
         backBtn.setBounds(0, 0, 50, 50);
         backBtn.setBorderPainted(false);
 
-        themePanel = new ThemePanel(AddThemeImages.getImages());
-        themePanel.setOpaque(true);
-        themePanel.setBounds(200,150,400,480);
+        setThemePanel(new ThemePanel(AddThemeImages.getImages()));
+        getThemePanel().setOpaque(true);
+        getThemePanel().setBounds(30,150,360,440);
+
+
+        difPanel = new JPanel();
+        difPanel.setBounds(400,150,360,200);
+        difPanel.setBackground(Color.orange);
+
+        mapPanel = new JPanel();
+        mapPanel.setBounds(400,370,360,200);
+        mapPanel.setBackground(Color.orange);
 
         this.add(backBtn);
-        this.add(startBtn);
-        this.add(themePanel);
+        this.add(getStartBtn());
+        this.add(getThemePanel());
+        this.add(difPanel);
+        this.add(mapPanel);
         this.add(imgBg);
 
-        startBtn.addActionListener(new ActionListener(){
+        getThemePanel().getNextButton().addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                setPanelBackground();
+            }
+        });
+        getThemePanel().getPreviousButton().addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                setPanelBackground();
+            }
+        });
+        getStartBtn().addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 setVisible(false);
-                themePanel.startGame();
+                getThemePanel().startGame();
             }
         });
 
@@ -79,8 +104,13 @@ public class ConfigsUI extends JFrame implements ActionListener {
                 setVisible(false);
                 Launcher l2 = new Launcher();
                 l2.launchHome();
+
             }
         });
+
+
+
+
     }
     public void start() {
         setVisible(true);
@@ -88,5 +118,28 @@ public class ConfigsUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         }
+
+    public ThemePanel getThemePanel() {
+        return themePanel;
     }
 
+    public void setThemePanel(ThemePanel themePanel) {
+        this.themePanel = themePanel;
+    }
+
+    public JButton getStartBtn() {
+        return startBtn;
+    }
+
+    public void setStartBtn(JButton startBtn) {
+        this.startBtn = startBtn;
+    }
+    public void setPanelBackground(){
+        bgPath = themePanel.getCurrentThemeName();
+        ImageIcon bg = new ImageIcon("src/main/resources/sprite/theme/" + bgPath + "/bg.png");
+        imgBg.setIcon(bg);
+        repaint();
+    }
+
+
+}

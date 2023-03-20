@@ -53,14 +53,6 @@ public class HomeUI
         startBtn.setBorderPainted(false);
         c.add(startBtn);
 
-        ImageIcon imageIconSettingtBtn = new ImageIcon("src/main/resources/sprite/settingbtn.png");
-        Image settingbtn = imageIconSettingtBtn.getImage();
-        Image scaledImageSettingBtn = ((Image) settingbtn).getScaledInstance(253,100,Image.SCALE_SMOOTH);
-        ImageIcon scaledImgSettingBtn = new ImageIcon(scaledImageSettingBtn);
-        settingBtn = new JButton(scaledImgSettingBtn);
-        settingBtn.setBounds(280, 480, 253, 90);
-        settingBtn.setBorderPainted(false);
-        c.add(settingBtn);
 
         ImageIcon logo1 = new ImageIcon("src/main/resources/sprite/logo.png");
         Image ch1 = logo1.getImage();
@@ -83,12 +75,6 @@ public class HomeUI
         startBtn.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 launcher.launchConfigure();
-                setVisible(false);
-            }
-        });
-        settingBtn.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                SettingUI s1 = new SettingUI();
                 setVisible(false);
             }
         });

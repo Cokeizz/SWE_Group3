@@ -147,17 +147,14 @@ public class AnimatedSprite implements Sprite {
             lastUpdate = now;
         }
     }
-
     @Override
     public int getWidth() {
         assert currentSprite() != null;
         return currentSprite().getWidth();
     }
-
     @Override
     public int getHeight() {
         assert currentSprite() != null;
         return currentSprite().getHeight();
     }
-
 }

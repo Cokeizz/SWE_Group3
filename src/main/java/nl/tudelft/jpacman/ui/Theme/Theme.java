@@ -21,7 +21,7 @@ public class Theme {
     
     public ImageIcon getIcon() {
         img = icon.getImage();
-        scaledImage = new ImageIcon(img.getScaledInstance(400,400,Image.SCALE_SMOOTH));
+        scaledImage = new ImageIcon(img.getScaledInstance(360,360,Image.SCALE_SMOOTH));
         return scaledImage;
     }
     

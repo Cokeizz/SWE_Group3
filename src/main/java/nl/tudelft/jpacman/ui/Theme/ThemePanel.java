@@ -4,13 +4,11 @@ import javax.swing.*;
 
 import nl.tudelft.jpacman.Launcher;
 import nl.tudelft.jpacman.sprite.PacManSprites;
-import nl.tudelft.jpacman.sprite.Sprite;
-import nl.tudelft.jpacman.ui.HomeUI;
+import nl.tudelft.jpacman.ui.ConfigsUI;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.RoundRectangle2D;
 import java.util.ArrayList;
 
 public class ThemePanel extends JPanel implements ActionListener{
@@ -22,6 +20,7 @@ public class ThemePanel extends JPanel implements ActionListener{
     private JLabel choose;
     private JButton backHomeBtn;
     private JButton startBtn;
+    private String themeBG = "origin";
 
     private ArrayList<Theme> themeImages;
     private int currentThemeImageIndex;
@@ -29,30 +28,33 @@ public class ThemePanel extends JPanel implements ActionListener{
 
     private Launcher startGame;
     private PacManSprites sprite;
+    private JButton nextButton;
+    private JButton previousButton;
 
     public ThemePanel(ArrayList<Theme> themes) {
-        this.themeImages = themes;
+        this.setThemeImages(themes);
 
         this.setLayout(new BorderLayout());
 
         this.setBackground(Color.orange);
+        this.setOpaque(true);
 
 
-        currentThemeImageIndex = 0;
+        setCurrentThemeImageIndex(0);
 
         themeLabel = new JLabel();
-        themeLabel.setIcon(themes.get(currentThemeImageIndex).getIcon());
+        themeLabel.setIcon(themes.get(getCurrentThemeImageIndex()).getIcon());
         themeLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
 
         // Create the previous and next buttons
-        JButton previousButton = new JButton("Previous");
-        previousButton.addActionListener(this);
-        JButton nextButton = new JButton("Next");
-        nextButton.addActionListener(this);
+        setPreviousButton(new JButton("Previous"));
+        getPreviousButton().addActionListener(this);
+        setNextButton(new JButton("Next"));
+        getNextButton().addActionListener(this);
         buttonPanel = new JPanel();
-        buttonPanel.add(previousButton);
-        buttonPanel.add(nextButton);
+        buttonPanel.add(getPreviousButton());
+        buttonPanel.add(getNextButton());
         buttonPanel.setOpaque(false);
 
         this.add(themeLabel,"Center");
@@ -63,24 +65,31 @@ public class ThemePanel extends JPanel implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Previous")) {
-            currentThemeImageIndex--;
-            if (currentThemeImageIndex < 0) {
-                currentThemeImageIndex = themeImages.size() - 1;
+            setCurrentThemeImageIndex(getCurrentThemeImageIndex() - 1);
+
+            if (getCurrentThemeImageIndex() < 0) {
+                setCurrentThemeImageIndex(getThemeImages().size() - 1);
+
             }
             // System.out.println(getCurrentThemeName());
 
         } else if (e.getActionCommand().equals("Next")) {
-            currentThemeImageIndex++;
-            if (currentThemeImageIndex >= themeImages.size()) {
-                currentThemeImageIndex = 0;
+            setCurrentThemeImageIndex(getCurrentThemeImageIndex() + 1);
+
+            if (getCurrentThemeImageIndex() >= getThemeImages().size()) {
+                setCurrentThemeImageIndex(0);
             }
         }
         // Update the image label with the new image
-        themeLabel.setIcon(themeImages.get(currentThemeImageIndex).getIcon());
+
+
+        themeLabel.setIcon(getThemeImages().get(getCurrentThemeImageIndex()).getIcon());
+
+        //System.out.println(themeImages.get(currentThemeImageIndex).getName());
     }
     //Return name of theme
     public String getCurrentThemeName() {
-        return themeImages.get(currentThemeImageIndex).getName();
+        return getThemeImages().get(getCurrentThemeImageIndex()).getName();
     }
     public void startGame(){
         startGame = new Launcher();
@@ -98,5 +107,40 @@ public class ThemePanel extends JPanel implements ActionListener{
         // Sprite themeSprite = sprite.getThemeSprite();
         startGame.launch();
     }
+
+    public JButton getNextButton() {
+        return nextButton;
+    }
+
+    public void setNextButton(JButton nextButton) {
+        this.nextButton = nextButton;
+    }
+
+    public JButton getPreviousButton() {
+        return previousButton;
+    }
+
+    public void setPreviousButton(JButton previousButton) {
+        this.previousButton = previousButton;
+    }
+
+    public int getCurrentThemeImageIndex() {
+        return currentThemeImageIndex;
+    }
+
+    public void setCurrentThemeImageIndex(int currentThemeImageIndex) {
+        this.currentThemeImageIndex = currentThemeImageIndex;
+    }
+
+    public ArrayList<Theme> getThemeImages() {
+        return themeImages;
+    }
+
+    public void setThemeImages(ArrayList<Theme> themeImages) {
+        this.themeImages = themeImages;
+    }
+
+
+
 
 }

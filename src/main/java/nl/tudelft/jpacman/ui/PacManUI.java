@@ -1,7 +1,6 @@
 package nl.tudelft.jpacman.ui;
 
-import java.awt.BorderLayout;
-import java.awt.Container;
+import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.Map;
 import java.util.concurrent.Executors;
@@ -80,8 +79,9 @@ public class PacManUI extends JFrame{
 
 
 
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
+
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         PacKeyListener keys = new PacKeyListener(keyMappings);
         addKeyListener(keys);
 
@@ -100,7 +100,6 @@ public class PacManUI extends JFrame{
         contentPanel.add(buttonPanel, BorderLayout.SOUTH);
         contentPanel.add(scorePanel, BorderLayout.NORTH);
         contentPanel.add(boardPanel, BorderLayout.CENTER);
-
 
         pack();
     }
