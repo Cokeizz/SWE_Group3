@@ -1,6 +1,8 @@
 package nl.tudelft.jpacman.points;
 
 import nl.tudelft.jpacman.board.Direction;
+import nl.tudelft.jpacman.level.Level;
+import nl.tudelft.jpacman.level.LevelFactory;
 import nl.tudelft.jpacman.level.Pellet;
 import nl.tudelft.jpacman.level.Player;
 import nl.tudelft.jpacman.npc.Ghost;

@@ -7,6 +7,10 @@ import java.util.Optional;
 import nl.tudelft.jpacman.board.Direction;
 import nl.tudelft.jpacman.board.Square;
 import nl.tudelft.jpacman.board.Unit;
+import nl.tudelft.jpacman.game.GameFactory;
+import nl.tudelft.jpacman.game.SinglePlayerGame;
+import nl.tudelft.jpacman.level.LevelFactory;
+import nl.tudelft.jpacman.level.Pellet;
 import nl.tudelft.jpacman.level.Player;
 import nl.tudelft.jpacman.npc.Ghost;
 import nl.tudelft.jpacman.sprite.Sprite;
@@ -61,6 +65,7 @@ public class Blinky extends Ghost {
      */
     // TODO Blinky should speed up when there are a few pellets left, but he
     // has no way to find out how many there are.
+
     public Blinky(Map<Direction, Sprite> spriteMap) {
         super(spriteMap, MOVE_INTERVAL, INTERVAL_VARIATION);
     }
@@ -95,6 +100,7 @@ public class Blinky extends Ghost {
         if (path != null && !path.isEmpty()) {
             return Optional.ofNullable(path.get(0));
         }
+
         return Optional.empty();
     }
 }

@@ -8,11 +8,7 @@ import nl.tudelft.jpacman.board.BoardFactory;
 import nl.tudelft.jpacman.board.Direction;
 import nl.tudelft.jpacman.game.Game;
 import nl.tudelft.jpacman.game.GameFactory;
-import nl.tudelft.jpacman.level.Level;
-import nl.tudelft.jpacman.level.LevelFactory;
-import nl.tudelft.jpacman.level.MapParser;
-import nl.tudelft.jpacman.level.Player;
-import nl.tudelft.jpacman.level.PlayerFactory;
+import nl.tudelft.jpacman.level.*;
 import nl.tudelft.jpacman.npc.ghost.GhostFactory;
 import nl.tudelft.jpacman.points.PointCalculator;
 import nl.tudelft.jpacman.points.PointCalculatorLoader;
@@ -95,6 +91,14 @@ public class Launcher {
         GameFactory gf = getGameFactory();
         Level level = makeLevel();
         game = gf.createSinglePlayerGame(level, loadPointCalculator());
+        return game;
+    }
+
+    // method for create game difficulty
+    public Game makeLevelDifficultyGame() {
+        GameFactory gf = getGameFactory();
+        Level level = makeLevel();
+        game = gf.createLevelDifficultyGame(level, loadPointCalculator(), "Hard");
         return game;
     }
 
@@ -221,14 +225,12 @@ public class Launcher {
         configs.start();
     }
     public void launch() {
-
-        makeGame();
+//        makeGame();
+        makeLevelDifficultyGame();
         PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
         addSinglePlayerKeys(builder);
         pacManUI = builder.build(getGame());
         pacManUI.start();
-
-
     }
 
     /**

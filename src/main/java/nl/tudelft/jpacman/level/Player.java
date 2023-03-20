@@ -1,5 +1,6 @@
 package nl.tudelft.jpacman.level;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import nl.tudelft.jpacman.board.Direction;
@@ -47,6 +48,7 @@ public class Player extends Unit {
      * @param deathAnimation
      *            The sprite to be shown when this player dies.
      */
+
     protected Player(Map<Direction, Sprite> spriteMap, AnimatedSprite deathAnimation) {
         this.score = 0;
         this.alive = true;

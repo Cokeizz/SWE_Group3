@@ -36,10 +36,19 @@ public class SinglePlayerGame extends Game {
      *            The way to calculate points upon collisions.
      */
     protected SinglePlayerGame(Player player, Level level, PointCalculator pointCalculator) {
-        super(pointCalculator);
+        super(pointCalculator, 20);
 
         assert player != null;
         assert level != null;
+
+        this.player = player;
+        this.level = level;
+        this.level.registerPlayer(player);
+    }
+
+    // Contructor for create a game depends on level difficulty
+    public SinglePlayerGame(Player player, Level level, PointCalculator pointCalculator, int levelTime) {
+        super(pointCalculator, levelTime);
 
         this.player = player;
         this.level = level;

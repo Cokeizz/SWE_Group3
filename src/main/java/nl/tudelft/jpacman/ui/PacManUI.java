@@ -50,6 +50,8 @@ public class PacManUI extends JFrame{
      */
     private final BoardPanel boardPanel;
 
+    private final TimePanel timePanel;
+
     /**
      * Creates a new UI for a JPacman game.
      *
@@ -95,11 +97,14 @@ public class PacManUI extends JFrame{
 
         boardPanel = new BoardPanel(game);
 
+        timePanel = new TimePanel(game);
+
         Container contentPanel = getContentPane();
         contentPanel.setLayout(new BorderLayout());
         contentPanel.add(buttonPanel, BorderLayout.SOUTH);
         contentPanel.add(scorePanel, BorderLayout.NORTH);
         contentPanel.add(boardPanel, BorderLayout.CENTER);
+        contentPanel.add(timePanel, BorderLayout.NORTH);
 
         pack();
     }

@@ -3,6 +3,7 @@ package nl.tudelft.jpacman.ui.Theme;
 import javax.swing.*;
 
 import nl.tudelft.jpacman.Launcher;
+import nl.tudelft.jpacman.level.Player;
 import nl.tudelft.jpacman.sprite.PacManSprites;
 import nl.tudelft.jpacman.ui.ConfigsUI;
 
@@ -139,8 +140,5 @@ public class ThemePanel extends JPanel implements ActionListener{
     public void setThemeImages(ArrayList<Theme> themeImages) {
         this.themeImages = themeImages;
     }
-
-
-
 
 }

@@ -39,11 +39,26 @@ public class GameFactory {
         return new SinglePlayerGame(playerFactory.createPacMan(), level, pointCalculator);
     }
 
+    public Game createLevelDifficultyGame(Level level, PointCalculator pointCalculator, String difficulty) {
+        int time = getTimeDifficulty(difficulty);
+        return new SinglePlayerGame(playerFactory.createPacMan(), level, pointCalculator, time);
+    }
+
     /**
      * Returns the player factory associated with this game factory.
      *
      * @return The player factory associated with this game factory.
      */
+
+    public int getTimeDifficulty(String difficulty) {
+        int time = 120;
+        if (difficulty == "Hard") {
+            time = 30;
+        } else if (difficulty == "Medium") {
+            time = 60;
+        }
+        return time;
+    }
     protected PlayerFactory getPlayerFactory() {
         return playerFactory;
     }

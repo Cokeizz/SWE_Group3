@@ -1,6 +1,7 @@
 package nl.tudelft.jpacman.game;
 
 import java.util.List;
+import javax.swing.Timer;
 
 import nl.tudelft.jpacman.Launcher;
 import nl.tudelft.jpacman.board.Direction;
@@ -32,14 +33,29 @@ public abstract class Game implements LevelObserver {
      */
     private PointCalculator pointCalculator;
 
+    private int remainingTime;
+
+    private Timer timer;
+
     /**
      * Creates a new game.
      *
      * @param pointCalculator
      *             The way to calculate points upon collisions.
      */
-    protected Game(PointCalculator pointCalculator) {
+
+    public Game() {
+
+    }
+    protected Game(PointCalculator pointCalculator, int totalTimeInSeconds) {
         this.pointCalculator = pointCalculator;
+        this.remainingTime = totalTimeInSeconds;
+        this.timer = new Timer(1000, e -> {
+            remainingTime--;
+            if(remainingTime <= 0) {
+                stop();
+            }
+        });
         inProgress = false;
     }
 
@@ -51,10 +67,11 @@ public abstract class Game implements LevelObserver {
             if (isInProgress()) {
                 return;
             }
-            if (getLevel().isAnyPlayerAlive() && getLevel().remainingPellets() > 0) {
+            if (getLevel().isAnyPlayerAlive() && getLevel().remainingPellets() > 0 ) {
                 inProgress = true;
                 getLevel().addObserver(this);
                 getLevel().start();
+                timer.start();
             }
         }
     }
@@ -69,11 +86,13 @@ public abstract class Game implements LevelObserver {
             }
             inProgress = false;
             getLevel().stop();
+            timer.stop();
 //            System.out.println("Stop!!! shit");
 //            Launcher launch = new Launcher();
 //            launch.startGame();
         }
     }
+
 
     /**
      * @return <code>true</code> iff the game is started and in progress.
@@ -116,5 +135,13 @@ public abstract class Game implements LevelObserver {
     @Override
     public void levelLost() {
         stop();
+    }
+
+    public int getRemainingTime() {
+        return remainingTime;
+    }
+
+    public void decrementTime() {
+        remainingTime--;
     }
 }
