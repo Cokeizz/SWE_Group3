@@ -29,6 +29,8 @@ public class ConfigsUI extends JFrame implements ActionListener {
     private JPanel mapPanel;
     private String bgPath = "origin";
     private ImageIcon scaledIcon;
+    private JLabel img2;
+
 
     public ConfigsUI() {
         setTitle("Customize");
@@ -37,13 +39,21 @@ public class ConfigsUI extends JFrame implements ActionListener {
         setResizable(true);
         setLayout(null);
 
+        ImageIcon logo1 = new ImageIcon("src/main/resources/sprite/logo.png");
+        Image ch1 = logo1.getImage();
+        Image scaledImage2 = ((Image) ch1).getScaledInstance(285,200,Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon2 = new ImageIcon(scaledImage2);
+        img2 = new JLabel(scaledIcon2);
+
+
+
         ImageIcon logo = new ImageIcon("src/main/resources/sprite/theme/"+bgPath+ "/bg.png");
         Image imagebg = logo.getImage();
         Image scaledImage = ((Image) imagebg).getScaledInstance(800,800,Image.SCALE_AREA_AVERAGING);
         scaledIcon = new ImageIcon(scaledImage);
         imgBg = new JLabel(scaledIcon);
         imgBg.setSize(800,800);
-        imgBg.setLocation(0,0);
+
 
 
         ImageIcon imageIconStartBtn = new ImageIcon("src/main/resources/sprite/playbtn.png");
@@ -66,30 +76,50 @@ public class ConfigsUI extends JFrame implements ActionListener {
         getThemePanel().setOpaque(true);
         getThemePanel().setBounds(30,150,360,440);
 
-
         difPanel = new JPanel();
-        difPanel.setBounds(400,150,360,200);
-        difPanel.setBackground(Color.orange);
+        difPanel.setLayout(null);
+        difPanel.setBounds(400,150,360,440);
+       // difPanel.setBackground(Color.black);
+        difPanel.setOpaque(false);
 
-        mapPanel = new JPanel();
-        mapPanel.setBounds(400,370,360,200);
-        mapPanel.setBackground(Color.orange);
+        JButton difBtn1 = new JButton(new ImageIcon("src/main/resources/sprite/easyBtn.png"));
+        JButton difBtn2 = new JButton(new ImageIcon("src/main/resources/sprite/mediumBtn.png"));
+        JButton difBtn3 = new JButton(new ImageIcon("src/main/resources/sprite/hardBtn.png"));
+        JButton difBtn4 = new JButton(new ImageIcon("src/main/resources/sprite/superhardBtn.png"));
+        img2.setBounds(40,-50,285,200);
+        int distance = 40;
+        difBtn1.setBounds(distance,100,70,70);
+        difBtn2.setBounds(distance+70,100,70,70);
+        difBtn3.setBounds(distance+140,100,70,70);
+        difBtn4.setBounds(distance+210,100,70,70);
+
+
+
+        difPanel.add(img2);
+        difPanel.add(difBtn1);
+        difPanel.add(difBtn2);
+        difPanel.add(difBtn3);
+        difPanel.add(difBtn4);
+
+
 
         this.add(backBtn);
         this.add(getStartBtn());
         this.add(getThemePanel());
         this.add(difPanel);
-        this.add(mapPanel);
         this.add(imgBg);
+
+
+
 
         getThemePanel().getNextButton().addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                setPanelBackground();
+
             }
         });
         getThemePanel().getPreviousButton().addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                setPanelBackground();
+
             }
         });
         getStartBtn().addActionListener(new ActionListener(){
