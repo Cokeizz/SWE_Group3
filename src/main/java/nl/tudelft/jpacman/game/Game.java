@@ -93,7 +93,6 @@ public abstract class Game implements LevelObserver {
         }
     }
 
-
     /**
      * @return <code>true</code> iff the game is started and in progress.
      */

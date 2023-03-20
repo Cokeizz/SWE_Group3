@@ -372,5 +372,6 @@ public class Level {
          * this event is received.
          */
         void levelLost();
+
     }
 }
