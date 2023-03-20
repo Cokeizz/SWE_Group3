@@ -49,9 +49,9 @@ public class ThemePanel extends JPanel implements ActionListener{
 
 
         // Create the previous and next buttons
-        setPreviousButton(new JButton("Previous"));
+        setPreviousButton(new JButton(new ImageIcon("src/main/resources/sprite/previousBtn.png")));
         getPreviousButton().addActionListener(this);
-        setNextButton(new JButton("Next"));
+        setNextButton(new JButton(new ImageIcon("src/main/resources/sprite/nextBtn.png")));
         getNextButton().addActionListener(this);
         buttonPanel = new JPanel();
         buttonPanel.add(getPreviousButton());
@@ -61,32 +61,32 @@ public class ThemePanel extends JPanel implements ActionListener{
         this.add(themeLabel,"Center");
         this.add(buttonPanel,"South");
 
+        getNextButton().addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                setCurrentThemeImageIndex(getCurrentThemeImageIndex() + 1);
+
+                if (getCurrentThemeImageIndex() >= getThemeImages().size()) {
+                    setCurrentThemeImageIndex(0);
+                }
+                themeLabel.setIcon(getThemeImages().get(getCurrentThemeImageIndex()).getIcon());
+            }
+        });
+        getPreviousButton().addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                setCurrentThemeImageIndex(getCurrentThemeImageIndex() - 1);
+
+                if (getCurrentThemeImageIndex() < 0) {
+                    setCurrentThemeImageIndex(getThemeImages().size() - 1);
+                }
+                themeLabel.setIcon(getThemeImages().get(getCurrentThemeImageIndex()).getIcon());
+            }
+        });
 
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals("Previous")) {
-            setCurrentThemeImageIndex(getCurrentThemeImageIndex() - 1);
-
-            if (getCurrentThemeImageIndex() < 0) {
-                setCurrentThemeImageIndex(getThemeImages().size() - 1);
-
-            }
-            // System.out.println(getCurrentThemeName());
-
-        } else if (e.getActionCommand().equals("Next")) {
-            setCurrentThemeImageIndex(getCurrentThemeImageIndex() + 1);
-
-            if (getCurrentThemeImageIndex() >= getThemeImages().size()) {
-                setCurrentThemeImageIndex(0);
-            }
-        }
-        // Update the image label with the new image
 
 
-        themeLabel.setIcon(getThemeImages().get(getCurrentThemeImageIndex()).getIcon());
-
-        //System.out.println(themeImages.get(currentThemeImageIndex).getName());
     }
     //Return name of theme
     public String getCurrentThemeName() {
