@@ -284,7 +284,7 @@ public class Level {
      */
     public boolean isAnyPlayerAlive() {
         for (Player player : players) {
-            if (player.isAlive()) {
+            if (player.isAlive() && player.getLife() > 0) {
                 return true;
             }
         }

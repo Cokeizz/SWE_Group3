@@ -20,6 +20,8 @@ public class Player extends Unit {
      */
     private int score;
 
+    private int life;
+
     /**
      * The animations for every direction.
      */
@@ -52,6 +54,7 @@ public class Player extends Unit {
     protected Player(Map<Direction, Sprite> spriteMap, AnimatedSprite deathAnimation) {
         this.score = 0;
         this.alive = true;
+        this.life = 3;
         this.sprites = spriteMap;
         this.deathSprite = deathAnimation;
         deathSprite.setAnimating(false);
@@ -63,7 +66,10 @@ public class Player extends Unit {
      * @return <code>true</code> iff the player is alive.
      */
     public boolean isAlive() {
-        return alive;
+        if (life > 0) {
+            return alive;
+        }
+        return false;
     }
 
     /**
@@ -130,4 +136,8 @@ public class Player extends Unit {
     public void addPoints(int points) {
         score += points;
     }
+
+    public void decreaseLife() { life -= 1; }
+
+    public int getLife() {return life;}
 }

@@ -140,8 +140,4 @@ public abstract class Game implements LevelObserver {
     public int getRemainingTime() {
         return remainingTime;
     }
-
-    public void decrementTime() {
-        remainingTime--;
-    }
 }
