@@ -107,7 +107,7 @@ public class ThemePanel extends JPanel implements ActionListener{
         // sprite.getThemeSprite();
         // Sprite themeSprite = sprite.getThemeSprite();
 
-        startGame.setLevelGhostFactory("4");
+        startGame.setLevelGhostFactory(diff);
         startGame.launchGame(diff);
     }
 

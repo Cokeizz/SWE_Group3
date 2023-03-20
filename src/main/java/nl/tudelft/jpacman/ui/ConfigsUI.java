@@ -147,8 +147,6 @@ public class ConfigsUI extends JFrame implements ActionListener {
         });
 
 
-
-
         getThemePanel().getNextButton().addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
 
@@ -171,7 +169,6 @@ public class ConfigsUI extends JFrame implements ActionListener {
                 setVisible(false);
                 Launcher l2 = new Launcher();
                 l2.launchHome();
-
             }
         });
 
