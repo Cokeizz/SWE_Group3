@@ -41,6 +41,7 @@ public class Launcher {
 
     private PacManUI pacManUI;
 
+    public String level;
     private Game game;
 
     private ConfigsUI configsUI;
@@ -157,10 +158,14 @@ public class Launcher {
     /**
      * @return A new factory using the sprites from {@link #getSpriteStore()}.
      */
-    protected GhostFactory getGhostFactory() {
-        return new GhostFactory(getSpriteStore());
+    public void setLevelGhostFactory(String level){
+        this.level = level;
     }
-
+    protected GhostFactory getGhostFactory() {
+        GhostFactory buildGF = new GhostFactory(getSpriteStore());
+        buildGF.setGhostMoveSpeed(this.level);
+        return buildGF;
+    }
     /**
      * @return A new factory using the players from {@link #getPlayerFactory()}.
      */

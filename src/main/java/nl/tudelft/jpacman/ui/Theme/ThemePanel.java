@@ -106,6 +106,8 @@ public class ThemePanel extends JPanel implements ActionListener{
         // send String of name file to sprite.setTheme(getCurrentThemeName());
         // sprite.getThemeSprite();
         // Sprite themeSprite = sprite.getThemeSprite();
+
+        startGame.setLevelGhostFactory("4");
         startGame.launchGame(diff);
     }
 

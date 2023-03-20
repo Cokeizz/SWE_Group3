@@ -55,7 +55,7 @@ public class Clyde extends Ghost {
     /**
      * The base movement interval.
      */
-    private static final int MOVE_INTERVAL = 250;
+    private static int MOVE_INTERVAL = 250;
 
     /**
      * A map of opposite directions.
@@ -74,8 +74,8 @@ public class Clyde extends Ghost {
      *
      * @param spriteMap The sprites for this ghost.
      */
-    public Clyde(Map<Direction, Sprite> spriteMap) {
-        super(spriteMap, MOVE_INTERVAL, INTERVAL_VARIATION);
+    public Clyde(Map<Direction, Sprite> spriteMap, int speed) {
+        super(spriteMap, MOVE_INTERVAL = speed, INTERVAL_VARIATION);
     }
 
     /**

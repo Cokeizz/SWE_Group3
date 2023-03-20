@@ -13,7 +13,26 @@ public class GhostFactory {
     /**
      * The sprite store containing the ghost sprites.
      */
+    private String level;
+    private Integer MoveSpeed;
     private final PacManSprites sprites;
+
+    public void setGhostMoveSpeed(String level){
+        if(level.equals("1")){
+            this.MoveSpeed = 500;
+        } else if (level.equals("2")) {
+            this.MoveSpeed = 400;
+        }
+        else if (level.equals("3")) {
+            this.MoveSpeed = 300;
+        }
+        else if (level.equals("4")) {
+            this.MoveSpeed = 100;
+        }
+        else{
+            this.MoveSpeed = 250;
+        }
+    }
 
     /**
      * Creates a new ghost factory.
@@ -31,7 +50,8 @@ public class GhostFactory {
      * @return A new Blinky.
      */
     public Ghost createBlinky() {
-        return new Blinky(sprites.getGhostSprite(GhostColor.RED));
+        Blinky ghost_bk = new Blinky(sprites.getGhostSprite(GhostColor.RED),this.MoveSpeed);
+        return ghost_bk;
     }
 
     /**
@@ -41,7 +61,7 @@ public class GhostFactory {
      * @return A new Pinky.
      */
     public Ghost createPinky() {
-        return new Pinky(sprites.getGhostSprite(GhostColor.PINK));
+        return new Pinky(sprites.getGhostSprite(GhostColor.PINK),this.MoveSpeed);
     }
 
     /**
@@ -51,7 +71,10 @@ public class GhostFactory {
      * @return A new Inky.
      */
     public Ghost createInky() {
-        return new Inky(sprites.getGhostSprite(GhostColor.ORANGE));
+//        Inky ghost_ik = new Inky(sprites.getGhostSprite(GhostColor.ORANGE));
+//        ghost_ik.setMoveInterval(getMoveSpeed());
+//        return ghost_ik;
+        return new Inky(sprites.getGhostSprite(GhostColor.ORANGE),this.MoveSpeed);
     }
 
     /**
@@ -61,6 +84,6 @@ public class GhostFactory {
      * @return A new Clyde.
      */
     public Ghost createClyde() {
-        return new Clyde(sprites.getGhostSprite(GhostColor.CYAN));
+        return new Clyde(sprites.getGhostSprite(GhostColor.CYAN),this.MoveSpeed);
     }
 }

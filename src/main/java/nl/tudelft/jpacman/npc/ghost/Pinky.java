@@ -61,7 +61,7 @@ public class Pinky extends Ghost {
     /**
      * The base movement interval.
      */
-    private static final int MOVE_INTERVAL = 200;
+    private static int MOVE_INTERVAL = 200;
 
     /**
      * Creates a new "Pinky", a.k.a. "Speedy".
@@ -69,10 +69,9 @@ public class Pinky extends Ghost {
      * @param spriteMap
      *            The sprites for this ghost.
      */
-    public Pinky(Map<Direction, Sprite> spriteMap) {
-        super(spriteMap, MOVE_INTERVAL, INTERVAL_VARIATION);
+    public Pinky(Map<Direction, Sprite> spriteMap,int speed) {
+        super(spriteMap, MOVE_INTERVAL = speed, INTERVAL_VARIATION);
     }
-
     /**
      * {@inheritDoc}
      *

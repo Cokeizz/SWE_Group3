@@ -55,7 +55,7 @@ public class Blinky extends Ghost {
     /**
      * The base movement interval.
      */
-    private static final int MOVE_INTERVAL = 250;
+    private static int MOVE_INTERVAL = 250;
 
     /**
      * Creates a new "Blinky", a.k.a. "Shadow".
@@ -66,8 +66,9 @@ public class Blinky extends Ghost {
     // TODO Blinky should speed up when there are a few pellets left, but he
     // has no way to find out how many there are.
 
-    public Blinky(Map<Direction, Sprite> spriteMap) {
-        super(spriteMap, MOVE_INTERVAL, INTERVAL_VARIATION);
+    public Blinky(Map<Direction, Sprite> spriteMap, int speed) {
+        super(spriteMap, MOVE_INTERVAL= speed, INTERVAL_VARIATION);
+        System.out.print(MOVE_INTERVAL);
     }
 
     /**

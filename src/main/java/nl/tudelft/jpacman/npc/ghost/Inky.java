@@ -44,17 +44,16 @@ public class Inky extends Ghost {
     /**
      * The base movement interval.
      */
-    private static final int MOVE_INTERVAL = 250;
+    private static int MOVE_INTERVAL = 250;
 
     /**
      * Creates a new "Inky".
      *
      * @param spriteMap The sprites for this ghost.
      */
-    public Inky(Map<Direction, Sprite> spriteMap) {
-        super(spriteMap, MOVE_INTERVAL, INTERVAL_VARIATION);
+    public Inky(Map<Direction, Sprite> spriteMap, int speed) {
+        super(spriteMap, MOVE_INTERVAL = speed, INTERVAL_VARIATION);
     }
-
     /**
      * {@inheritDoc}
      *
