@@ -124,7 +124,7 @@ public class ConfigsUI extends JFrame implements ActionListener {
                 setCurrentMap(getCurrentMap() + 1);
 
                 if (getCurrentMap() > 5){
-                    setCurrentMap(0);
+                    setCurrentMap(1);
                 }
                 System.out.println(getCurrentMap());
             }
@@ -250,6 +250,7 @@ public class ConfigsUI extends JFrame implements ActionListener {
     }
 
     public void setCurrentMap(int c){this.currentMap = c;}
+
     public int getCurrentMap(){return this.currentMap;}
     public void setPanelBackground(){
         bgPath = themePanel.getCurrentThemeName();

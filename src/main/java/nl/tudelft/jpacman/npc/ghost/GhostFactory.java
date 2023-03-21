@@ -19,15 +19,15 @@ public class GhostFactory {
 
     public void setGhostMoveSpeed(String level){
         if(level.equals("Easy")){
-            this.MoveSpeed = 500;
-        } else if (level.equals("Medium")) {
             this.MoveSpeed = 400;
+        } else if (level.equals("Medium")) {
+            this.MoveSpeed = 325;
         }
         else if (level.equals("Hard")) {
-            this.MoveSpeed = 300;
+            this.MoveSpeed = 250;
         }
         else if (level.equals("Super Hard")) {
-            this.MoveSpeed = 100;
+            this.MoveSpeed = 175;
         }
         else{
             this.MoveSpeed = 250;

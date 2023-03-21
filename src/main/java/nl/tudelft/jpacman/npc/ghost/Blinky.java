@@ -68,7 +68,7 @@ public class Blinky extends Ghost {
 
     public Blinky(Map<Direction, Sprite> spriteMap, int speed) {
         super(spriteMap, MOVE_INTERVAL= speed, INTERVAL_VARIATION);
-        System.out.print(MOVE_INTERVAL);
+        System.out.println("Move speed"+MOVE_INTERVAL);
     }
 
     /**

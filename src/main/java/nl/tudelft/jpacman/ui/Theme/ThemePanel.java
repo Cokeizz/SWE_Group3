@@ -107,7 +107,7 @@ public class ThemePanel extends JPanel implements ActionListener{
         sprite.setGroundPath(path);
         sprite.setPelletPath(path);
         startGame.setPacmanSprites(sprite);
-        startGame.setMap("/"+diff+"/"+map+".txt");
+        startGame.setMap("/"+map+".txt");
         // send String of name file to sprite.setTheme(getCurrentThemeName());
         // sprite.getThemeSprite();
         // Sprite themeSprite = sprite.getThemeSprite();
