@@ -36,6 +36,8 @@ public class ConfigsUI extends JFrame implements ActionListener {
     private int currentMap =1 ;
     private JButton nextMapBtn;
     private JButton previousMapBtn;
+    private JButton aboutBtn;
+    private JFrame aboutFrame;
 
     private MapPanel mapPanel;
 
@@ -77,6 +79,10 @@ public class ConfigsUI extends JFrame implements ActionListener {
         backBtn = new JButton(scaledImgBackBtn);
         backBtn.setBounds(0, 0, 50, 50);
         backBtn.setBorderPainted(false);
+
+        aboutBtn = new JButton(new ImageIcon("src/main/resources/sprite/about.png"));
+        aboutBtn.setBounds(0, 720, 50, 50);
+        aboutBtn.setBorderPainted(false);
 
         setThemePanel(new ThemePanel(AddThemeImages.getImages()));
         getThemePanel().setOpaque(true);
@@ -122,10 +128,11 @@ public class ConfigsUI extends JFrame implements ActionListener {
         nextMapBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 setCurrentMap(getCurrentMap() + 1);
-
                 if (getCurrentMap() > 5){
                     setCurrentMap(1);
                 }
+                mapImage.setIcon(new ImageIcon("src/main/resources/sprite/map/map"+getCurrentMap()+".png"));
+                repaint();
                 System.out.println(getCurrentMap());
             }
         });
@@ -137,6 +144,8 @@ public class ConfigsUI extends JFrame implements ActionListener {
                 if (getCurrentMap() <= 0){
                     setCurrentMap(5);
                 }
+                mapImage.setIcon(new ImageIcon("src/main/resources/sprite/map/map"+getCurrentMap()+".png"));
+                repaint();
                 System.out.println(getCurrentMap());
             }
         });
@@ -152,12 +161,23 @@ public class ConfigsUI extends JFrame implements ActionListener {
         difPanel.add(previousMapBtn);
 
         this.add(backBtn);
+        this.add(aboutBtn);
         this.add(getStartBtn());
         this.add(getThemePanel());
         this.add(difPanel);
         this.add(imgBg);
 
-
+        aboutBtn.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                aboutFrame = new JFrame();
+                aboutFrame.setLayout(null);
+                aboutFrame.setBounds(300,0,500,500);
+                aboutFrame.setVisible(true);
+                JLabel imgAbout = new JLabel(new ImageIcon("src/main/resources/sprite/Game Difficulty.png"));
+                imgAbout.setSize(new Dimension(500,500));
+                aboutFrame.add(imgAbout);
+            }
+        });
         difBtn1.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 currentDif = 1;

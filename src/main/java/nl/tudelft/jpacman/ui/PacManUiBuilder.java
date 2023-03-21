@@ -7,6 +7,8 @@ import java.util.Map;
 import nl.tudelft.jpacman.game.Game;
 import nl.tudelft.jpacman.ui.ScorePanel.ScoreFormatter;
 
+import javax.swing.*;
+
 /**
  * Builder for the JPac-Man UI.
  *
@@ -27,7 +29,7 @@ public class PacManUiBuilder {
     /**
      * Map of buttons and their actions.
      */
-    private final Map<String, Action> buttons;
+    private final Map<ImageIcon, Action> buttons;
 
     /**
      * Map of key events and their actions.
@@ -90,7 +92,7 @@ public class PacManUiBuilder {
     private void addStopButton(final Game game) {
         assert game != null;
 
-        buttons.put(STOP_CAPTION, game::stop);
+        buttons.put(new ImageIcon("src/main/resources/sprite/stopGameBtn.png"), game::stop);
     }
 
     /**
@@ -102,8 +104,8 @@ public class PacManUiBuilder {
      */
     private void addStartButton(final Game game) {
         assert game != null;
+        buttons.put(new ImageIcon("src/main/resources/sprite/playGameBtn.png"), game::start);
 
-        buttons.put(START_CAPTION, game::start);
     }
 
     /**
@@ -132,11 +134,9 @@ public class PacManUiBuilder {
      *            The action to execute when the button is clicked.
      * @return The builder.
      */
-    public PacManUiBuilder addButton(String caption, Action action) {
+    public PacManUiBuilder addButton(ImageIcon caption, Action action) {
         assert caption != null;
-        assert !caption.isEmpty();
         assert action != null;
-
         buttons.put(caption, action);
         return this;
     }
@@ -149,9 +149,8 @@ public class PacManUiBuilder {
      */
     public PacManUiBuilder withDefaultButtons() {
         defaultButtons = true;
-        buttons.put(START_CAPTION, null);
-        buttons.put(STOP_CAPTION, null);
-
+        //buttons.put(null, null);
+        //buttons.put(null, null);
         return this;
     }
 
