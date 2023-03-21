@@ -60,14 +60,24 @@ public class PacManUiBuilder {
      *            The game to build the UI for.
      * @return A new Pac-Man UI with the set keys and buttons.
      */
-    public PacManUI build(final Game game) {
+//    public PacManUI build(final Game game) {
+//        assert game != null;
+//
+//        if (defaultButtons) {
+//            addStartButton(game);
+//            addStopButton(game);
+//        }
+//        return new PacManUI(game, buttons, keyMappings, scoreFormatter);
+//    }
+
+    public PacManUI build(final Game game, String difficulty) {
         assert game != null;
 
         if (defaultButtons) {
             addStartButton(game);
             addStopButton(game);
         }
-        return new PacManUI(game, buttons, keyMappings, scoreFormatter);
+        return new PacManUI(game, buttons, keyMappings, scoreFormatter, difficulty);
     }
 
     /**

@@ -107,7 +107,7 @@ public class HomeUI
                 sprite.setPelletPath(path);
                 launcher.setPacmanSprites(sprite);
                 launcher.setLevelGhostFactory("4");
-                launcher.setMap("/0.txt");
+                launcher.setMap("/1.txt");
                 launcher.launchAdventure();
                 setVisible(false);
             }
