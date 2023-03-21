@@ -44,8 +44,9 @@ public abstract class Game implements LevelObserver {
      *             The way to calculate points upon collisions.
      */
 
-    public Game() {
-
+    public Game(PointCalculator pointCalculator) {
+        this.pointCalculator = pointCalculator;
+        inProgress = false;
     }
     protected Game(PointCalculator pointCalculator, int totalTimeInSeconds) {
         this.pointCalculator = pointCalculator;
@@ -67,15 +68,16 @@ public abstract class Game implements LevelObserver {
             if (isInProgress()) {
                 return;
             }
-            if (getLevel().isAnyPlayerAlive() && getLevel().remainingPellets() > 0 ) {
+            if (getLevel().isAnyPlayerAlive() && getLevel().remainingPellets() > 0 && !isTimeNull()) {
                 inProgress = true;
                 getLevel().addObserver(this);
                 getLevel().start();
                 timer.start();
-                if (getLevel().isPlayerLifeDecreased()) {
-                    getLevel().registerPlayer(getLevel().getPlayer());
-                }
             }
+
+            inProgress = true;
+            getLevel().addObserver(this);
+            getLevel().start();
         }
     }
 
@@ -87,13 +89,25 @@ public abstract class Game implements LevelObserver {
             if (!isInProgress()) {
                 return;
             }
+            if (!isTimeNull()){
+                inProgress = false;
+                getLevel().stop();
+                timer.stop();
+            }
             inProgress = false;
             getLevel().stop();
-            timer.stop();
+//            timer.stop();
 //            System.out.println("Stop!!! shit");
 //            Launcher launch = new Launcher();
 //            launch.startGame();
         }
+    }
+
+    public boolean isTimeNull() {
+        if (timer == null) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -142,4 +156,5 @@ public abstract class Game implements LevelObserver {
     public int getRemainingTime() {
         return remainingTime;
     }
+
 }

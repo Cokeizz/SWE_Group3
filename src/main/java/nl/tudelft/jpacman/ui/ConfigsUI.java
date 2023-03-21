@@ -33,6 +33,7 @@ public class ConfigsUI extends JFrame implements ActionListener {
     private ImageIcon scaledIcon;
     private JLabel img2;
     private int currentDif;
+    private int currentMap =1 ;
     private JButton nextMapBtn;
     private JButton previousMapBtn;
 
@@ -118,7 +119,27 @@ public class ConfigsUI extends JFrame implements ActionListener {
         previousMapBtn.setBounds(0,300,40,40);
         previousMapBtn.setBorderPainted(false);
 
+        nextMapBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                setCurrentMap(getCurrentMap() + 1);
 
+                if (getCurrentMap() > 5){
+                    setCurrentMap(0);
+                }
+                System.out.println(getCurrentMap());
+            }
+        });
+
+        previousMapBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                setCurrentMap(getCurrentMap() - 1);
+
+                if (getCurrentMap() <= 0){
+                    setCurrentMap(5);
+                }
+                System.out.println(getCurrentMap());
+            }
+        });
 
         difPanel.add(img2);
         difPanel.add(difBtn1);
@@ -175,8 +196,6 @@ public class ConfigsUI extends JFrame implements ActionListener {
         });
 
 
-
-
         getThemePanel().getNextButton().addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
 
@@ -190,7 +209,7 @@ public class ConfigsUI extends JFrame implements ActionListener {
         getStartBtn().addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 setVisible(false);
-                getThemePanel().startGame(getCurrentDifficulty());
+                getThemePanel().startGame(getCurrentDifficulty(),getCurrentMap());
             }
         });
 
@@ -199,7 +218,6 @@ public class ConfigsUI extends JFrame implements ActionListener {
                 setVisible(false);
                 Launcher l2 = new Launcher();
                 l2.launchHome();
-
             }
         });
 
@@ -230,6 +248,9 @@ public class ConfigsUI extends JFrame implements ActionListener {
     public void setStartBtn(JButton startBtn) {
         this.startBtn = startBtn;
     }
+
+    public void setCurrentMap(int c){this.currentMap = c;}
+    public int getCurrentMap(){return this.currentMap;}
     public void setPanelBackground(){
         bgPath = themePanel.getCurrentThemeName();
         ImageIcon bg = new ImageIcon("src/main/resources/sprite/theme/" + bgPath + "/bg.png");

@@ -18,15 +18,15 @@ public class GhostFactory {
     private final PacManSprites sprites;
 
     public void setGhostMoveSpeed(String level){
-        if(level.equals("1")){
+        if(level.equals("Easy")){
             this.MoveSpeed = 500;
-        } else if (level.equals("2")) {
+        } else if (level.equals("Medium")) {
             this.MoveSpeed = 400;
         }
-        else if (level.equals("3")) {
+        else if (level.equals("Hard")) {
             this.MoveSpeed = 300;
         }
-        else if (level.equals("4")) {
+        else if (level.equals("Super Hard")) {
             this.MoveSpeed = 100;
         }
         else{

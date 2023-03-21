@@ -284,7 +284,7 @@ public class Level {
      */
     public boolean isAnyPlayerAlive() {
         for (Player player : players) {
-            if (player.isAlive() && player.getLife() > 0) {
+            if (player.isAlive()) {
                 return true;
             }
         }
@@ -294,14 +294,15 @@ public class Level {
     public Player getPlayer() {
         return players.get(0);
     }
-    public boolean isPlayerLifeDecreased() {
-        for (Player player : players) {
-            if (player.isAlive() && player.getLife() < 3) {
-                return true;
-            }
-        }
-        return false;
-    }
+
+//    public boolean isPlayerLifeDecreased() {
+//        for (Player player : players) {
+//            if (player.isAlive() && player.getLife() < 3) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 
     /**
      * Counts the pellets remaining on the board.
