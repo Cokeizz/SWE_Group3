@@ -39,14 +39,15 @@ public class TimePanel extends JPanel {
         add(timeLabel);
 
         // Update the time label every second
-        new Timer(1000, e -> {
-            int remainingTime = game.getRemainingTime();
-            if (remainingTime <= 0) {
-                timeLabel.setText("Time: Unlimited");
-            } else {
-                timeLabel.setText(String.format("Time: %d seconds", remainingTime));
-            }
-        }).start();
+        if (game.getRemainingTime() != 0) {
+            new Timer(1000, e -> {
+                int remainingTime = game.getRemainingTime();
+                if (remainingTime >= 0){
+                    timeLabel.setText(String.format("Time: %d seconds", remainingTime));
+                }
+            }).start();
+        }
+        timeLabel.setText("Time: Unlimited");
     }
 }
 
