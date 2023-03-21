@@ -26,11 +26,13 @@ public class ConfigsUI extends JFrame implements ActionListener {
     private ThemePanel themePanel;
     private JButton backBtn;
     private JPanel difPanel;
-    private JPanel mapPanel;
+    private JLabel mapImage;
     private String bgPath = "origin";
     private ImageIcon scaledIcon;
     private JLabel img2;
     private int currentDif;
+    private JButton nextMapBtn;
+    private JButton previousMapBtn;
 
 
     public ConfigsUI() {
@@ -54,8 +56,6 @@ public class ConfigsUI extends JFrame implements ActionListener {
         scaledIcon = new ImageIcon(scaledImage);
         imgBg = new JLabel(scaledIcon);
         imgBg.setSize(800,800);
-
-
 
         ImageIcon imageIconStartBtn = new ImageIcon("src/main/resources/sprite/playbtn.png");
         Image startbtn = imageIconStartBtn.getImage();
@@ -94,13 +94,25 @@ public class ConfigsUI extends JFrame implements ActionListener {
         difBtn3.setBounds(distance+140,100,70,70);
         difBtn4.setBounds(distance+210,100,70,70);
 
+        mapImage = new JLabel(new ImageIcon("src/main/resources/sprite/map/map1.png"));
+        mapImage.setBounds(60,200,240,240);
+
+        nextMapBtn = new JButton(new ImageIcon("src/main/resources/sprite/nextMapBtn.png"));
+        nextMapBtn.setBounds(315,300,40,40);
+        nextMapBtn.setBorderPainted(false);
+
+        previousMapBtn = new JButton(new ImageIcon("src/main/resources/sprite/previousMapBtn.png"));
+        previousMapBtn.setBounds(0,300,40,40);
+        previousMapBtn.setBorderPainted(false);
+
         difPanel.add(img2);
         difPanel.add(difBtn1);
         difPanel.add(difBtn2);
         difPanel.add(difBtn3);
         difPanel.add(difBtn4);
-
-
+        difPanel.add(mapImage);
+        difPanel.add(nextMapBtn);
+        difPanel.add(previousMapBtn);
 
         this.add(backBtn);
         this.add(getStartBtn());
