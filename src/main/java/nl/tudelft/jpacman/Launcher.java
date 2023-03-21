@@ -246,7 +246,7 @@ public class Launcher {
     }
 
     public void launchGame(String difficulty) {
-        if (difficulty == "Super Hard") {
+        if (difficulty == "Super Hard" || difficulty == "Hard") {
             makeLevelDifficultyGame(difficulty);
             PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
             addSinglePlayerKeys(builder);

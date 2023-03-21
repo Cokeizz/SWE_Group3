@@ -40,11 +40,8 @@ public class GameFactory {
     }
 
     public Game createLevelDifficultyGame(Level level, PointCalculator pointCalculator, String difficulty) {
-        if (difficulty == "Super Hard") {
-            int time = getTimeDifficulty(difficulty);
-            return new SinglePlayerGame(playerFactory.createPacMan(), level, pointCalculator, time);
-        }
-        return new SinglePlayerGame(playerFactory.createPacMan(), level, pointCalculator);
+        int time = getTimeDifficulty(difficulty);
+        return new SinglePlayerGame(playerFactory.createPacMan(), level, pointCalculator, time);
     }
 
     /**
@@ -56,11 +53,11 @@ public class GameFactory {
     public int getTimeDifficulty(String difficulty) {
         int time = 60;
         if (difficulty == "Hard") {
-            time = 30;
+            time = 80;
         } else if (difficulty == "Easy") {
             time = 120;
         } else if (difficulty == "Super Hard") {
-            time = 10;
+            time = 50;
         }
         return time;
     }
