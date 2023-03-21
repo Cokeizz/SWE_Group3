@@ -291,6 +291,18 @@ public class Level {
         return false;
     }
 
+    public Player getPlayer() {
+        return players.get(0);
+    }
+    public boolean isPlayerLifeDecreased() {
+        for (Player player : players) {
+            if (player.isAlive() && player.getLife() < 3) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * Counts the pellets remaining on the board.
      *

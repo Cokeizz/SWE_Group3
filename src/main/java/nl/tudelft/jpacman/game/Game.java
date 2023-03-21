@@ -72,6 +72,9 @@ public abstract class Game implements LevelObserver {
                 getLevel().addObserver(this);
                 getLevel().start();
                 timer.start();
+                if (getLevel().isPlayerLifeDecreased()) {
+                    getLevel().registerPlayer(getLevel().getPlayer());
+                }
             }
         }
     }
