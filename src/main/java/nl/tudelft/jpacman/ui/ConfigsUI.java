@@ -4,6 +4,8 @@ import javax.swing.*;
 
 import nl.tudelft.jpacman.Launcher;
 import nl.tudelft.jpacman.sprite.PacManSprites;
+import nl.tudelft.jpacman.ui.Map.AddMap;
+import nl.tudelft.jpacman.ui.Map.MapPanel;
 import nl.tudelft.jpacman.ui.Theme.AddThemeImages;
 import nl.tudelft.jpacman.ui.Theme.Theme;
 import nl.tudelft.jpacman.ui.Theme.ThemePanel;
@@ -33,6 +35,8 @@ public class ConfigsUI extends JFrame implements ActionListener {
     private int currentDif;
     private JButton nextMapBtn;
     private JButton previousMapBtn;
+
+    private MapPanel mapPanel;
 
 
     public ConfigsUI() {
@@ -94,6 +98,10 @@ public class ConfigsUI extends JFrame implements ActionListener {
         difBtn3.setBounds(distance+140,100,70,70);
         difBtn4.setBounds(distance+210,100,70,70);
 
+//        setMapPanel(new MapPanel(AddMap.getMaps()));
+//        getMapPanel().setOpaque(true);
+//        getMapPanel().setBounds(60,200,240,240);
+
         mapImage = new JLabel(new ImageIcon("src/main/resources/sprite/map/map1.png"));
         mapImage.setBounds(60,200,240,240);
 
@@ -105,11 +113,14 @@ public class ConfigsUI extends JFrame implements ActionListener {
         previousMapBtn.setBounds(0,300,40,40);
         previousMapBtn.setBorderPainted(false);
 
+
+
         difPanel.add(img2);
         difPanel.add(difBtn1);
         difPanel.add(difBtn2);
         difPanel.add(difBtn3);
         difPanel.add(difBtn4);
+//        difPanel.add(getMapPanel());
         difPanel.add(mapImage);
         difPanel.add(nextMapBtn);
         difPanel.add(previousMapBtn);
@@ -202,6 +213,10 @@ public class ConfigsUI extends JFrame implements ActionListener {
     public void setThemePanel(ThemePanel themePanel) {
         this.themePanel = themePanel;
     }
+
+    public void setMapPanel(MapPanel mapPanel) { this.mapPanel = mapPanel; }
+
+    public MapPanel getMapPanel() { return mapPanel; }
 
     public JButton getStartBtn() {
         return startBtn;

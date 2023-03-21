@@ -6,10 +6,12 @@ import nl.tudelft.jpacman.Launcher;
 import nl.tudelft.jpacman.level.Player;
 import nl.tudelft.jpacman.sprite.PacManSprites;
 import nl.tudelft.jpacman.ui.ConfigsUI;
+import nl.tudelft.jpacman.ui.Map.Map;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class ThemePanel extends JPanel implements ActionListener{
@@ -24,7 +26,11 @@ public class ThemePanel extends JPanel implements ActionListener{
     private String themeBG = "origin";
 
     private ArrayList<Theme> themeImages;
+
+    private ArrayList<Map> mapImages;
     private int currentThemeImageIndex;
+
+    private int currentMapImageIndex;
     private JLabel themeLabel;
 
     private Launcher startGame;
@@ -34,7 +40,6 @@ public class ThemePanel extends JPanel implements ActionListener{
 
     public ThemePanel(ArrayList<Theme> themes) {
         this.setThemeImages(themes);
-
         this.setLayout(new BorderLayout());
 
         this.setBackground(Color.orange);
