@@ -209,6 +209,16 @@ public class Level {
         }
     }
 
+    public void newLevel() {
+        synchronized (startStopLock) {
+            if (isInProgress()) {
+                return;
+            }
+            inProgress = true;
+            updateObservers();
+        }
+    }
+
     /**
      * Stops or pauses this level, no longer allowing any movement on the board
      * and stopping all NPCs.
@@ -271,6 +281,7 @@ public class Level {
         if (remainingPellets() == 0) {
             for (LevelObserver observer : observers) {
                 observer.levelWon();
+//                observer.newLevel();
             }
         }
     }
@@ -385,6 +396,8 @@ public class Level {
          * this event is received.
          */
         void levelLost();
+
+        void newLevel();
 
     }
 }

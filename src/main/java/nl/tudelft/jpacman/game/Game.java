@@ -103,6 +103,22 @@ public abstract class Game implements LevelObserver {
         }
     }
 
+    public void newLevel() {
+        synchronized (progressLock) {
+            if (!isInProgress()) {
+                return;
+            }
+            if (getLevel().remainingPellets() == 0 && getLevel().isAnyPlayerAlive()) {
+                inProgress = true;
+//                getLevel().addObserver(this);
+//                getLevel().newLevel();
+                getLevel().removeObserver(this);
+                getLevel().newLevel();
+            }
+
+        }
+    }
+
     public boolean isRemainingTimeNull() {
         if (remainingTime == 0) {
             return true;
@@ -147,6 +163,7 @@ public abstract class Game implements LevelObserver {
     public void levelWon() {
         stop();
     }
+
 
     @Override
     public void levelLost() {

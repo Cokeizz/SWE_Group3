@@ -245,6 +245,14 @@ public class Launcher {
         pacManUI.start();
     }
 
+    public void launchGameWithNoTime(String difficulty) {
+        makeGame();
+        PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
+        addSinglePlayerKeys(builder);
+        pacManUI = builder.build(getGame(), difficulty);
+        pacManUI.start();
+    }
+
     public void launchGame(String difficulty) {
         if (difficulty == "Super Hard" || difficulty == "Hard") {
             makeLevelDifficultyGame(difficulty);
@@ -253,7 +261,7 @@ public class Launcher {
             pacManUI = builder.build(getGame(), difficulty);
             pacManUI.start();
         } else {
-            launch();
+            launchGameWithNoTime(difficulty);
         }
     }
 
