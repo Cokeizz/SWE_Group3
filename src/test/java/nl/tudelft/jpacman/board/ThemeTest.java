@@ -7,6 +7,7 @@ import nl.tudelft.jpacman.Launcher;
 import nl.tudelft.jpacman.ui.ConfigsUI;
 import nl.tudelft.jpacman.ui.Theme.AddThemeImages;
 import nl.tudelft.jpacman.ui.Theme.ThemePanel;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 /**

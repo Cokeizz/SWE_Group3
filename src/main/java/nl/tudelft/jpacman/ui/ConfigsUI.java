@@ -37,6 +37,8 @@ public class ConfigsUI extends JFrame implements ActionListener {
     private JButton nextMapBtn;
     private JButton previousMapBtn;
 
+    private JButton difBtn1, difBtn2, difBtn3, difBtn4;
+
     private MapPanel mapPanel;
 
 
@@ -88,10 +90,10 @@ public class ConfigsUI extends JFrame implements ActionListener {
        // difPanel.setBackground(Color.black);
         difPanel.setOpaque(false);
 
-        JButton difBtn1 = new JButton(new ImageIcon("src/main/resources/sprite/easyBtn.png"));
-        JButton difBtn2 = new JButton(new ImageIcon("src/main/resources/sprite/mediumBtn.png"));
-        JButton difBtn3 = new JButton(new ImageIcon("src/main/resources/sprite/hardBtn.png"));
-        JButton difBtn4 = new JButton(new ImageIcon("src/main/resources/sprite/superhardBtn.png"));
+        difBtn1 = new JButton(new ImageIcon("src/main/resources/sprite/easyBtn.png"));
+        difBtn2 = new JButton(new ImageIcon("src/main/resources/sprite/mediumBtn.png"));
+        difBtn3 = new JButton(new ImageIcon("src/main/resources/sprite/hardBtn.png"));
+        difBtn4 = new JButton(new ImageIcon("src/main/resources/sprite/superhardBtn.png"));
         img2.setBounds(40,-50,285,200);
         int distance = 40;
         difBtn1.setBounds(distance,100,70,70);
@@ -269,5 +271,21 @@ public class ConfigsUI extends JFrame implements ActionListener {
         } else {
             return "Medium";
         }
+    }
+
+    public JButton getEasyDifBtn() {
+        return difBtn1;
+    }
+
+    public JButton getMediumDifBtn() {
+        return difBtn2;
+    }
+
+    public JButton getHardDifBtn() {
+        return difBtn3;
+    }
+
+    public JButton getSuperHardDifBtn() {
+        return difBtn4;
     }
 }

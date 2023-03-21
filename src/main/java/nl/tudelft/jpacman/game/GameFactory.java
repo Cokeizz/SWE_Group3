@@ -26,6 +26,7 @@ public class GameFactory {
         this.playerFactory = playerFactory;
     }
 
+
     /**
      * Creates a game for a single level with one player.
      *
@@ -51,11 +52,11 @@ public class GameFactory {
      */
 
     public int getTimeDifficulty(String difficulty) {
-        int time = 60;
+        int time = 0;
         if (difficulty == "Hard") {
             time = 80;
-        } else if (difficulty == "Easy") {
-            time = 120;
+        } else if (difficulty == "Easy" || difficulty == "Medium") {
+            return time;
         } else if (difficulty == "Super Hard") {
             time = 50;
         }

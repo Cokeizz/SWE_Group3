@@ -34,6 +34,10 @@ public class GhostFactory {
         }
     }
 
+    public int getGhostMoveSpeed() {
+        return MoveSpeed;
+    }
+
     /**
      * Creates a new ghost factory.
      *
