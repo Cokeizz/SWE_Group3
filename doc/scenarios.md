@@ -1,3 +1,5 @@
+
+
 JPacman Scenarios
 =================
 
@@ -11,7 +13,7 @@ This document describes a series of JPacman user scenarios, following the format
 Thus, each scenario is of the form:
 
 ---
- **Title** _one line describing the story_
+**Title** _one line describing the story_
 
 **Narrative**
 
@@ -36,6 +38,8 @@ JPacman is a very simple JPacman derivative, to be used for educational purposes
 
 The JPacman game is played on a rectangular board.  A square on the board can be empty, or can contain the Pacman itself, one of the several ghosts, a pellet (worth 10 points), or a wall. Moveable characters such as the Pacman and the ghosts can make single-step horizontal or vertical moves.  Tunnels on the border make it possible to move from one border to the opposite border.  When the Pacman moves over a square containing a pellet, the player earns points and the pellet disappears. If a player and a ghost meet at the same square, the the game is over. The player wins the game once he or she has eaten all pellets.
 
+JPacman ที่กลุ่มเราได้ทำการพัฒนาได้มีการเพิ่มปุ่ม Custom mode ในหน้า Home เพื่อเข้าสู้หน้า Custom mode ที่กลุ่มเราได้สร้างขึ้นมาและได้เพิ่ม Panel Theme , Panel map , Panel Difficulty ในส่วนของ ธีม เราได้สร้างขึ้นมาทั้งหมด 4 ธีม ได้แก่ Theme Original ,Theme Love,Theme Christmas,
+Theme Halloween โดยการออกแบบธีมพวกเราได้แรงบันดาลใจมาจากวันเทศกาลต่างๆ ในส่วนของ Map เราได้สร้างมาทั้งหมด 5 ด่าน ได้แก่ ด่านที่ 1,ด่านที่ 2,ด่านที่ 3,ด่านที่ 4,ด่านที่ 5 โดยการออกแบบด่านเราได้แรงบันดาลใจมาจากพวกเกม 2D ในส่วนของ Difficulty เราได้สร้างขึ้นมาทั้งหมด 4 Difficulty ได้แก่ Easy Button,Medium Button,Hard Button,Super Hard Button โดยการออกแบบDifficultyได้แรงบันดาลใจมาจากเกมต่างที่เคยเล่นว่าควรมีระดับความยากง่ายแบบไหนให้ผีเดินเร็วช้ายังไงให้เหมาะกับเกม Pacman
 
 ## 3. User Stories
 
@@ -48,7 +52,7 @@ so that I can actually play
  
 Scenario S1.1: Start.
 Given the user has launched the JPacman GUI;
-When  the user presses the "Start" button;
+When  the user presses the "Custom mode" button;
 Then  the game should start.
 ```
 
@@ -145,6 +149,36 @@ When  the player hits the "Start" button;
 Then  the game is resumed.
 ```
 
+###Story 5: Change Theme
+```
+As a player
+I want to change theme
+so that i can play game with new theme
+
+Scenario S5.1: open theme page
+Given the player has launched the JPacman GUI;
+when the player presses the "Custom mode" button on home page;
+then Displays the Theme page to select a theme.
+
+Scenario S5.2: Choosing Theme
+Given the player has launched the Customize page;
+when the player presses "Next theme" button;
+then Displays next theme on theme panel.
+
+
+Scenario S5.3: Start game with chosen theme
+Given the player has launched the Customize page;
+when the player presses "Custom mode" button;
+then launch game with chosen theme.
+
+
+Scenario S5.4: Back to home page
+Given the player has launched the Customize page;
+when the player presses "Back" button;
+then Displays home page
+```
+
+
 ## 3. User Interface
 
 The user interface for JPacman is relatively simple.  The game is
@@ -156,7 +190,7 @@ reflected in the image used for the player. The GUI furthermore
 contains a "Start", and "Stop" button (at the bottom of the
 GUI), as well as an indicator for the amount of food eaten and the
 game's overall state (playing, game won, player died, ready to start
-the play). 
+the play).
 
 ## 4. Development Requirements
 
