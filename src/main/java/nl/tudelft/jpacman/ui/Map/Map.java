@@ -14,7 +14,7 @@ public class Map {
         this.mapImage = mapImage;
     }
 
-    public Map() {}
+    public Map(String map1, String s) {}
 
     public String getMap() {
         return this.map;

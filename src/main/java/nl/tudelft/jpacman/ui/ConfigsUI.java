@@ -40,7 +40,7 @@ public class ConfigsUI extends JFrame implements ActionListener {
 
 
     public ConfigsUI() {
-        setTitle("Customize");
+        setTitle("Custom Mode");
         setBounds(300, 0, 800, 800);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(true);
@@ -101,6 +101,11 @@ public class ConfigsUI extends JFrame implements ActionListener {
 //        setMapPanel(new MapPanel(AddMap.getMaps()));
 //        getMapPanel().setOpaque(true);
 //        getMapPanel().setBounds(60,200,240,240);
+
+        difBtn1.setBorderPainted(false);
+        difBtn2.setBorderPainted(false);
+        difBtn3.setBorderPainted(false);
+        difBtn4.setBorderPainted(false);
 
         mapImage = new JLabel(new ImageIcon("src/main/resources/sprite/map/map1.png"));
         mapImage.setBounds(60,200,240,240);

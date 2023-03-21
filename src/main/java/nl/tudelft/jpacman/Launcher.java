@@ -229,9 +229,16 @@ public class Launcher {
         ConfigsUI configs = new ConfigsUI();
         configs.start();
     }
+
+    public void launchAdventure() {
+        makeGame();
+        PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
+        addSinglePlayerKeys(builder);
+        pacManUI = builder.build(getGame());
+        pacManUI.start();
+    }
     public void launch() {
-//        makeGame();
-//        makeLevelDifficultyGame();
+        makeGame();
         PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
         addSinglePlayerKeys(builder);
         pacManUI = builder.build(getGame());
