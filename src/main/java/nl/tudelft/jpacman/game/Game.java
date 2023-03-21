@@ -68,7 +68,7 @@ public abstract class Game implements LevelObserver {
             if (isInProgress()) {
                 return;
             }
-            if (getLevel().isAnyPlayerAlive() && getLevel().remainingPellets() > 0 && !isTimeNull()) {
+            if (getLevel().isAnyPlayerAlive() && getLevel().remainingPellets() > 0 && !isRemainingTimeNull()) {
                 inProgress = true;
                 getLevel().addObserver(this);
                 getLevel().start();
@@ -89,7 +89,7 @@ public abstract class Game implements LevelObserver {
             if (!isInProgress()) {
                 return;
             }
-            if (!isTimeNull()){
+            if (!isRemainingTimeNull()){
                 inProgress = false;
                 getLevel().stop();
                 timer.stop();
@@ -103,8 +103,8 @@ public abstract class Game implements LevelObserver {
         }
     }
 
-    public boolean isTimeNull() {
-        if (timer == null) {
+    public boolean isRemainingTimeNull() {
+        if (remainingTime == 0) {
             return true;
         }
         return false;
