@@ -177,8 +177,62 @@ Given the player has launched the Customize page;
 when the player presses "Back" button;
 then Displays home page
 ```
+###Story 6: Change Map
+```
+As a player
+I want to change Map;
+so that i can play game with new Map.
+
+Scenario S6.1: open  Custom Mode page
+Given the player has launched the JPacman GUI;
+when the player presses the "Start" button on home page;
+then Displays the Custom Mode page to select a map.
+
+Scenario S6.2: Choosing map
+Given the player has launched the Customize page;
+when the player presses "Next Map" button;
+then Displays next Map on Map panel.
 
 
+Scenario S6.3: Start game with chosen Map
+Given the player has launched the Customize page;
+when the player presses "Play" button;
+then launch game with chosen map.
+
+
+Scenario S6.4: Back to home page
+Given the player has launched the Customize page;
+when the player presses "Back" button;
+then Displays home page
+```
+###Story 7: Choose Difficulty
+```
+As a player
+I want to Choose Difficulty;
+so that i can play game with different Difficulty level.
+
+Scenario S7.1: open  Custom Mode page
+Given the player has launched the JPacman GUI;
+when the player presses the "Start" button on home page;
+then Displays the Custom Mode page to select a map.
+
+Scenario S7.2: Difficulty Button
+Given the player has launched the Customize page;
+when the player presses "Difficulty" button;
+then Displays Pressed Difficulty button.
+
+
+Scenario S7.3: Start game with chosen Difficulty
+Given the player has launched the Customize page;
+when the player presses "Play" button;
+then launch game with chosen Difficulty.
+
+
+Scenario S7.4: Back to home page
+Given the player has launched the Customize page;
+when the player presses "Back" button;
+then Displays home page
+```
 ## 3. User Interface
 
 The user interface for JPacman is relatively simple.  The game is
@@ -199,3 +253,4 @@ can easily be used by (the latest versions of) standard (open source) Java devel
 
 ----
 [![Creative Commons License](http://i.creativecommons.org/l/by-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-sa/4.0/)
+

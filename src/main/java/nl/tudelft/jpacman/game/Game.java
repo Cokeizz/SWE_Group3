@@ -1,7 +1,8 @@
 package nl.tudelft.jpacman.game;
 
+import java.awt.*;
 import java.util.List;
-import javax.swing.Timer;
+import javax.swing.*;
 
 import nl.tudelft.jpacman.Launcher;
 import nl.tudelft.jpacman.board.Direction;
@@ -16,6 +17,9 @@ import nl.tudelft.jpacman.points.PointCalculator;
  * @author Jeroen Roosen 
  */
 public abstract class Game implements LevelObserver {
+    private JFrame popUp = new JFrame();
+    private JLabel imgWon = new JLabel(new ImageIcon("src/main/resources/sprite/gameWon.gif"));
+    private JLabel imgOver = new JLabel(new ImageIcon("src/main/resources/sprite/gameOver.gif"));
 
     /**
      * <code>true</code> if the game is in progress.
@@ -43,7 +47,6 @@ public abstract class Game implements LevelObserver {
      * @param pointCalculator
      *             The way to calculate points upon collisions.
      */
-
     public Game(PointCalculator pointCalculator) {
         this.pointCalculator = pointCalculator;
         inProgress = false;
@@ -97,7 +100,7 @@ public abstract class Game implements LevelObserver {
             inProgress = false;
             getLevel().stop();
 //            timer.stop();
-//            System.out.println("Stop!!! shit");
+//
 //            Launcher launch = new Launcher();
 //            launch.startGame();
         }
@@ -158,18 +161,26 @@ public abstract class Game implements LevelObserver {
             pointCalculator.pacmanMoved(player, direction);
         }
     }
-
     @Override
     public void levelWon() {
+        popUp.setLayout(null);
+        popUp.setBounds(500,300,400,400);
+        imgWon.setSize(new Dimension(400,400));
+        popUp.add(imgWon);
+        popUp.setVisible(true);
         stop();
     }
 
 
     @Override
     public void levelLost() {
+        popUp.setLayout(null);
+        popUp.setBounds(500,300,400,400);
+        popUp.setVisible(true);
+        imgOver.setSize(new Dimension(400,400));
+        popUp.add(imgOver);
         stop();
     }
-
     public int getRemainingTime() {
         return remainingTime;
     }

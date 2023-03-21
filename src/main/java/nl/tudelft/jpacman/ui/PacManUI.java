@@ -1,6 +1,7 @@
 package nl.tudelft.jpacman.ui;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Map;
 import java.util.concurrent.Executors;
@@ -51,6 +52,9 @@ public class PacManUI extends JFrame{
     private final BoardPanel boardPanel;
 
     private final TimePanel timePanel;
+    private ScheduledExecutorService service;
+
+
 
     /**
      * Creates a new UI for a JPacman game.
@@ -66,22 +70,17 @@ public class PacManUI extends JFrame{
      * @param scoreFormatter
      *            The formatter used to display the current score.
      */
-    public PacManUI(final Game game, final Map<String, Action> buttons,
+    public PacManUI(final Game game, final Map<ImageIcon, Action> buttons,
                     final Map<Integer, Action> keyMappings,
                     ScoreFormatter scoreFormatter, String difficulty) {
         super("JPacman");
         assert game != null;
         assert buttons != null;
         assert keyMappings != null;
-        buttons.put("Exit",this::exit);
 
-
+       // buttons.put(new ImageIcon("src/main/resources/sprite/exitGameBtn.png"),this::exit);
         setBounds(300, 0, 800, 800);
         setResizable(true);
-
-
-
-
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         PacKeyListener keys = new PacKeyListener(keyMappings);
@@ -91,24 +90,45 @@ public class PacManUI extends JFrame{
 
 
         scorePanel = new ScorePanel(game.getPlayers());
+
         if (scoreFormatter != null) {
             scorePanel.setScoreFormatter(scoreFormatter);
         }
 
         boardPanel = new BoardPanel(game);
-
         timePanel = new TimePanel(game);
+
+        JLabel difLabel = new JLabel("                                Difficulty : "+difficulty);
+
+        scorePanel.add(timePanel);
+        scorePanel.add(difLabel);
+
+        JButton exitBtn =new JButton(new ImageIcon("src/main/resources/sprite/exitGameBtn.png"));
+        exitBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                game.stop();
+                dispose();
+                Launcher l1 = new Launcher();
+                l1.launchConfigure();
+
+            }
+        });
+
+        buttonPanel.add(exitBtn);
 
         Container contentPanel = getContentPane();
         contentPanel.setLayout(new BorderLayout());
         contentPanel.add(buttonPanel, BorderLayout.SOUTH);
         contentPanel.add(scorePanel, BorderLayout.NORTH);
         contentPanel.add(boardPanel, BorderLayout.CENTER);
-        contentPanel.add(timePanel, BorderLayout.NORTH);
-        contentPanel.add(new JLabel("Difficulty : "+difficulty), BorderLayout.NORTH);
-
+        //contentPanel.add(timePanel, BorderLayout.NORTH);
+        //contentPanel.add(new JLabel("Difficulty : "+difficulty), BorderLayout.NORTH);
 
         pack();
+
+
+
     }
 
     /**
@@ -117,11 +137,11 @@ public class PacManUI extends JFrame{
      */
     public void start() {
         setVisible(true);
-        ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
+        service = Executors.newSingleThreadScheduledExecutor();
         service.scheduleAtFixedRate(this::nextFrame, 0, FRAME_INTERVAL, TimeUnit.MILLISECONDS);
     }
     public void exit(){
-        setVisible(false);
+        dispose();
         Launcher l1 = new Launcher();
         l1.launchConfigure();
     }

@@ -57,7 +57,7 @@ public class HomeUI
         startBtn.setBorderPainted(false);
         c.add(startBtn);
 
-        ImageIcon imageIconStartAdventureBtn = new ImageIcon("src/main/resources/sprite/adventureModeBtn.png");
+        ImageIcon imageIconStartAdventureBtn = new ImageIcon("src/main/resources/sprite/exitSystemBtn.png");
         Image startadventurebtn = imageIconStartAdventureBtn.getImage();
         Image scaledImageStartAdventureBtn = ((Image) startadventurebtn).getScaledInstance(300,75,Image.SCALE_SMOOTH);
         ImageIcon scaledImgStartAdventureBtn = new ImageIcon(scaledImageStartAdventureBtn);
@@ -70,7 +70,7 @@ public class HomeUI
         bgBtn.setBounds(235, 500, 330, 209);
         c.add(bgBtn);
 
-        ImageIcon logo1 = new ImageIcon("src/main/resources/sprite/logo.png");
+        ImageIcon logo1 = new ImageIcon("src/main/resources/sprite/logoHome.png");
         Image ch1 = logo1.getImage();
         Image scaledImage2 = ((Image) ch1).getScaledInstance(585,360,Image.SCALE_AREA_AVERAGING);
         ImageIcon scaledIcon2 = new ImageIcon(scaledImage2);
@@ -79,11 +79,11 @@ public class HomeUI
         img2.setLocation(-550,-400);
         c.add(img2);
 
-        ImageIcon logo = new ImageIcon("src/main/resources/sprite/bg.png");
+        ImageIcon logo = new ImageIcon("src/main/resources/sprite/bg.gif");
         Image image = logo.getImage();
         Image scaledImage = ((Image) image).getScaledInstance(800,800,Image.SCALE_AREA_AVERAGING);
         ImageIcon scaledIcon = new ImageIcon(scaledImage);
-        img = new JLabel(scaledIcon);
+        img = new JLabel(new ImageIcon("src/main/resources/sprite/bg.gif"));
         img.setSize(800,800);
         img.setLocation(0,0);
         c.add(img);
@@ -94,29 +94,16 @@ public class HomeUI
                 setVisible(false);
             }
         });
-
         startAdventureBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                sprite = new PacManSprites();
-                String path = "love";
-                sprite.setGhostPath(path);
-                sprite.setPacmanPath(path);
-                sprite.setWallPath(path);
-                sprite.setGroundPath(path);
-                sprite.setPelletPath(path);
-                launcher.setPacmanSprites(sprite);
-                launcher.setLevelGhostFactory("4");
-                launcher.setMap("/1.txt");
-                launcher.launchAdventure();
+                System.exit(0);
                 setVisible(false);
             }
         });
-
         setVisible(true);
     }
     public void actionPerformed(ActionEvent e)
     {
-
     }
 }
