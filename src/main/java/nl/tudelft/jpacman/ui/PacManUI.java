@@ -1,6 +1,8 @@
 package nl.tudelft.jpacman.ui;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -50,6 +52,9 @@ public class PacManUI extends JFrame{
     private final BoardPanel boardPanel;
 
     private final TimePanel timePanel;
+    private ScheduledExecutorService service;
+
+
 
     /**
      * Creates a new UI for a JPacman game.
@@ -73,8 +78,7 @@ public class PacManUI extends JFrame{
         assert buttons != null;
         assert keyMappings != null;
 
-        buttons.put(new ImageIcon("src/main/resources/sprite/exitGameBtn.png"),this::exit);
-
+       // buttons.put(new ImageIcon("src/main/resources/sprite/exitGameBtn.png"),this::exit);
         setBounds(300, 0, 800, 800);
         setResizable(true);
 
@@ -99,6 +103,20 @@ public class PacManUI extends JFrame{
         scorePanel.add(timePanel);
         scorePanel.add(difLabel);
 
+        JButton exitBtn =new JButton(new ImageIcon("src/main/resources/sprite/exitGameBtn.png"));
+        exitBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                game.stop();
+                dispose();
+                Launcher l1 = new Launcher();
+                l1.launchConfigure();
+
+            }
+        });
+
+        buttonPanel.add(exitBtn);
+
         Container contentPanel = getContentPane();
         contentPanel.setLayout(new BorderLayout());
         contentPanel.add(buttonPanel, BorderLayout.SOUTH);
@@ -106,7 +124,10 @@ public class PacManUI extends JFrame{
         contentPanel.add(boardPanel, BorderLayout.CENTER);
         //contentPanel.add(timePanel, BorderLayout.NORTH);
         //contentPanel.add(new JLabel("Difficulty : "+difficulty), BorderLayout.NORTH);
+
         pack();
+
+
 
     }
 
@@ -116,13 +137,11 @@ public class PacManUI extends JFrame{
      */
     public void start() {
         setVisible(true);
-        ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
+        service = Executors.newSingleThreadScheduledExecutor();
         service.scheduleAtFixedRate(this::nextFrame, 0, FRAME_INTERVAL, TimeUnit.MILLISECONDS);
     }
     public void exit(){
         dispose();
-        boardPanel.setEnabled(false);
-        //setVisible(false);
         Launcher l1 = new Launcher();
         l1.launchConfigure();
     }

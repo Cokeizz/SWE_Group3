@@ -100,7 +100,7 @@ public abstract class Game implements LevelObserver {
             inProgress = false;
             getLevel().stop();
 //            timer.stop();
-//            System.out.println("Stop!!! shit");
+//
 //            Launcher launch = new Launcher();
 //            launch.startGame();
         }
