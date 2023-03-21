@@ -21,6 +21,7 @@ public class HomeUI
     private JLabel img2;
 
     private JButton startBtn;
+    private JButton startAdventureBtn;
     private JButton settingBtn;
 
 
@@ -44,14 +45,28 @@ public class HomeUI
         name.setLocation(100, 100);
         c.add(name);*/
 
-        ImageIcon imageIconStartBtn = new ImageIcon("src/main/resources/sprite/startbtn.png");
+        ImageIcon imageIconStartBtn = new ImageIcon("src/main/resources/sprite/customModeBtn.png");
         Image startbtn = imageIconStartBtn.getImage();
-        Image scaledImageStartBtn = ((Image) startbtn).getScaledInstance(253,112,Image.SCALE_SMOOTH);
+        Image scaledImageStartBtn = ((Image) startbtn).getScaledInstance(300,75,Image.SCALE_SMOOTH);
         ImageIcon scaledImgStartBtn = new ImageIcon(scaledImageStartBtn);
         startBtn = new JButton(scaledImgStartBtn);
-        startBtn.setBounds(280, 350, 253, 90);
+        startBtn.setBounds(200, 510, 400, 100);
         startBtn.setBorderPainted(false);
         c.add(startBtn);
+
+        ImageIcon imageIconStartAdventureBtn = new ImageIcon("src/main/resources/sprite/adventureModeBtn.png");
+        Image startadventurebtn = imageIconStartAdventureBtn.getImage();
+        Image scaledImageStartAdventureBtn = ((Image) startadventurebtn).getScaledInstance(300,75,Image.SCALE_SMOOTH);
+        ImageIcon scaledImgStartAdventureBtn = new ImageIcon(scaledImageStartAdventureBtn);
+        startAdventureBtn = new JButton(scaledImgStartAdventureBtn);
+        startAdventureBtn.setBounds(200, 600, 400, 100);
+        startAdventureBtn.setBorderPainted(false);
+        c.add(startAdventureBtn);
+
+        JLabel bgBtn = new JLabel(new ImageIcon("src/main/resources/sprite/bgBtn.png"));
+        bgBtn.setBounds(235, 500, 330, 209);
+        c.add(bgBtn);
+
 
 
         ImageIcon logo1 = new ImageIcon("src/main/resources/sprite/logo.png");
@@ -65,11 +80,11 @@ public class HomeUI
 
         ImageIcon logo = new ImageIcon("src/main/resources/sprite/bg.png");
         Image image = logo.getImage();
-        Image scaledImage = ((Image) image).getScaledInstance(1920,1080,Image.SCALE_AREA_AVERAGING);
+        Image scaledImage = ((Image) image).getScaledInstance(800,800,Image.SCALE_AREA_AVERAGING);
         ImageIcon scaledIcon = new ImageIcon(scaledImage);
         img = new JLabel(scaledIcon);
-        img.setSize(1920,1080);
-        img.setLocation(-550,-240);
+        img.setSize(800,800);
+        img.setLocation(0,0);
         c.add(img);
 
         startBtn.addActionListener(new ActionListener(){
