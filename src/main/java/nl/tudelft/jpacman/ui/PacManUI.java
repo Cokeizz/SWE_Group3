@@ -68,7 +68,7 @@ public class PacManUI extends JFrame{
      */
     public PacManUI(final Game game, final Map<String, Action> buttons,
                     final Map<Integer, Action> keyMappings,
-                    ScoreFormatter scoreFormatter) {
+                    ScoreFormatter scoreFormatter, String difficulty) {
         super("JPacman");
         assert game != null;
         assert buttons != null;
@@ -105,6 +105,8 @@ public class PacManUI extends JFrame{
         contentPanel.add(scorePanel, BorderLayout.NORTH);
         contentPanel.add(boardPanel, BorderLayout.CENTER);
         contentPanel.add(timePanel, BorderLayout.NORTH);
+        contentPanel.add(new JLabel("Difficulty : "+difficulty), BorderLayout.NORTH);
+
 
         pack();
     }
